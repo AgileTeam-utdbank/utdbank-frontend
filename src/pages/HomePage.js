@@ -1,15 +1,16 @@
 import React from "react";
+import Footer from "../components/common/Footer";
 import Topbar from "../components/common/Topbar";
 import Banner from "../components/home/banner/Banner";
 import BannerContact from "../components/home/banner/BannerContact";
-import Features from "../components/home/Features";
-import HomeAbout from "../components/home/HomeAbout";
-import Counters from "../components/home/counter/Counters";
+import Counter from "../components/home/counter/Counter";
 import Facility from "../components/home/Facility";
+import Features from "../components/home/Features";
+import HomeAbout from "../components/home/homeabout/HomeAbout";
 import HomeContact from "../components/home/HomeContact";
-import HomePricing from "../components/home/HomePricing";
-import HomeService from "../components/home/HomeService";
-import Testimonals from "../components/home/testimonal/Testimonals";
+import Pricing from "../components/home/pricing/Pricing";
+import Testimonal from "../components/home/testimonal/Testimonal";
+import HomeServices from "../components/home/services/HomeServices";
 
 const HomePage = () => {
   return (
@@ -19,12 +20,13 @@ const HomePage = () => {
       <BannerContact />
       <Features />
       <HomeAbout />
-      <Counters />
-      <HomeService />
-      <HomePricing />
+      <Counter />
+      <HomeServices />
+      <Pricing />
       <Facility />
       <HomeContact />
-      <Testimonals />
+      <Testimonal />
+      <Footer />
     </>
   );
 };
