@@ -4,6 +4,7 @@ import CounterItem from "./CounterItem";
 
 const Counters = () => {
   return (
+
     <section className="counter-section pt-100 pb-70">
       <div className="container">
         <SectionTitle title="We always try to evaluate customers Values" />
@@ -34,6 +35,7 @@ const Counters = () => {
         </div>
       </div>
     </section>
+
   );
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+
 import FaqsPage from "../pages/FaqsPage";
 import ServicePage from "../pages/ServicePage";
 import PricingPage from "../pages/PricingPage";
@@ -19,9 +20,13 @@ const CustomRoutes = () => {
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/about" element={<AboutUsPage />} />
-      <Route path="/" element={<HomePage />} />
+         <Route path="/" element={<HomePage />} />
+
+     
     </Routes>
   );
 };
 
+
 export default CustomRoutes;
+

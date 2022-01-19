@@ -4,19 +4,25 @@ import UserMenu from "./UserMenu";
 
 const Menu = () => {
   return (
+    //  <!-- MENU START-->
     <div className="main-nav">
       <div className="container-fluid">
         <nav className="navbar navbar-expand-md navbar-light">
-          <a className="navbar-brand" href="index.html">
+          <Link to="/" className="navbar-brand">
             <img src="assets/images/logo.png" alt="logo" />
-          </a>
+          </Link>
+
           <div
             className="collapse navbar-collapse mean-menu"
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav mx-auto">
               <li className="nav-item">
+
                 <Link to="/" className="nav-link active">
+
+                
+
                   Home
                 </Link>
               </li>
@@ -46,10 +52,13 @@ const Menu = () => {
             </ul>
           </div>
 
+          {/* <!-- USER MENU START --> */}
           <UserMenu />
+          {/* <!-- USER MENU END --> */}
         </nav>
       </div>
     </div>
+    //  <!-- MENU END-->
   );
 };
 
