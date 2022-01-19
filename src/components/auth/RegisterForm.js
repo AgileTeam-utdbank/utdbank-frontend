@@ -86,7 +86,7 @@ const RegisterForm = () => {
                   as={MaskInput}
                   maskChar="_"
                   mask="000-00-0000"
-                  alwaysShowMask
+                  showMask
                 />
                 <Form.Control.Feedback type="invalid">
                   {formik.errors.ssn}
@@ -147,7 +147,7 @@ const RegisterForm = () => {
                 <Form.Control
                   type="email"
                   className="form-control"
-                  placeholder="SSN *"
+                  placeholder="email"
                   {...formik.getFieldProps("email")}
                   isInvalid={!!formik.errors.email}
                 />
