@@ -3,24 +3,20 @@ import SectionTitle from "../common/SectionTitle";
 
 const HomeAbout = () => {
   return (
-    // <!-- HOME ABOUT START -->
+
     <section className="home-about-section bg-off-white pt-100 pb-70">
       <div className="container">
         <div className="home-about-content">
-          {/* <!-- HOME ABOUT ITEM START --> */}
           <div className="row align-items-center">
             <div className="col-sm-12 col-md-12 col-lg-6 order-2 order-lg-1">
               <div className="home-about-item desk-pad-right-10 pb-30">
-                {/* <!-- SECTION TITLE START --> */}
-
                 <SectionTitle
                   title="A fully integrated suite for Large enterprise"
                   description="Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod cste et dolore magnam aliquam quaerat
-                voluptatem."
+                    sed do eiusmod cste et dolore magnam aliquam quaerat
+                    voluptatem."
                 />
 
-                {/* <!-- SECTION TITLE END --> */}
 
                 <div className="home-about-list">
                   <div className="home-about-list-item">
@@ -73,11 +69,11 @@ const HomeAbout = () => {
               </div>
             </div>
           </div>
-          {/* <!-- HOME ABOUT ITEM END --> */}
+
 
           <div className="section-mtb-40"></div>
 
-          {/* <!-- HOME ABOUT ITEM START --> */}
+
           <div className="row align-items-center">
             <div className="col-sm-12 col-md-12 col-lg-6">
               <div className="home-about-item home-about-image pb-30 about-image-shape">
@@ -92,16 +88,14 @@ const HomeAbout = () => {
             </div>
             <div className="col-sm-12 col-md-12 col-lg-6">
               <div className="home-about-item desk-pad-left-10 pb-30">
-                {/* <!-- SECTION TITLE START --> */}
 
                 <SectionTitle
                   title="Small to medium-sized businesses"
-                  description="Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod cste et dolore magnam aliquam quaerat
-                voluptatem."
+                  description="   Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod cste et dolore magnam aliquam quaerat
+                    voluptatem."
                 />
 
-                {/* <!-- SECTION TITLE END --> */}
 
                 <div className="home-about-list">
                   <div className="home-about-list-item">
@@ -132,23 +126,20 @@ const HomeAbout = () => {
               </div>
             </div>
           </div>
-          {/* <!-- HOME ABOUT ITEM END --> */}
+
+
           <div className="section-mtb-40"></div>
 
-          {/* <!-- HOME ABOUT ITEM START --> */}
           <div className="row align-items-center">
             <div className="col-sm-12 col-md-12 col-lg-6 order-2 order-lg-1">
               <div className="home-about-item desk-pad-right-10 pb-30">
-                {/* <!-- SECTION TITLE START --> */}
-
                 <SectionTitle
                   title="Entrepreneurs, and sole traders & Freelancers"
                   description="Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod cste et dolore magnam aliquam quaerat
-                voluptatem."
+            sed do eiusmod cste et dolore magnam aliquam quaerat
+            voluptatem."
                 />
 
-                {/* <!-- SECTION TITLE END --> */}
 
                 <div className="home-about-list">
                   <div className="home-about-list-item">
@@ -201,11 +192,11 @@ const HomeAbout = () => {
               </div>
             </div>
           </div>
-          {/* <!-- HOME ABOUT ITEM END --> */}
+
         </div>
       </div>
     </section>
-    // <!-- HOME ABOUT START -->
+
   );
 };
 

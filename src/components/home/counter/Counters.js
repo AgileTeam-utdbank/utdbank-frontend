@@ -4,67 +4,38 @@ import CounterItem from "./CounterItem";
 
 const Counters = () => {
   return (
-    // <!-- COUNTERS START-->
+
     <section className="counter-section pt-100 pb-70">
       <div className="container">
-        {/* <!-- SECTION TITLE START --> */}
-
         <SectionTitle title="We always try to evaluate customers Values" />
 
-        {/* <!-- SECTION TITLE END --> */}
-
         <div className="counter-content">
-          {/* <!-- COUNTER ITEM START --> */}
-
+          <CounterItem counter="70" size="lg" sign="+" title="Contributors" />
           <CounterItem
-            number="70"
-            sign="+"
-            size="lg"
-            title="Contributors"
-            loader={false}
-          />
-
-          {/* <!-- COUNTER ITEM END --> */}
-
-          {/* <!-- COUNTER ITEM START --> */}
-
-          <CounterItem
-            number="40"
-            sign="K"
+            counter="40"
             size="sm"
+            sign="K"
             title="Feedback"
-            loader={true}
+            loader
           />
-
-          {/* <!-- COUNTER ITEM END --> */}
-
-          {/* <!-- COUNTER ITEM START --> */}
-
           <CounterItem
-            number="1000"
-            sign="K"
+            counter="1000"
             size="sm"
+            sign="k"
             title="Downloaded"
-            loader={true}
+            loader
           />
-
-          {/* <!-- COUNTER ITEM END --> */}
-
-          {/* <!-- COUNTER ITEM START --> */}
-
           <CounterItem
-            number="590"
-            sign="+"
+            counter="590"
             size="lg"
+            sign="+"
             title="Workers"
-            loader={true}
+            loader
           />
-
-          {/* <!-- COUNTER ITEM END --> */}
         </div>
       </div>
     </section>
-    //{/* <!-- COUNTERS END --> */}
+
   );
 };
 

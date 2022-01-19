@@ -1,13 +1,12 @@
 import React from "react";
 
-const CounterItem = (props) => {
-  const { number, sign, size, title, loader } = props;
 
+const CounterItem = ({ counter, size, sign, title, loader }) => {
   return (
-    //{/* <!-- COUNTER ITEM START --> */}
     <div className="counter-item">
       <h3>
-        <span className="counter">{number}</span>
+        <span className="counter">{counter}</span>
+
         <span className={`counter-text-${size}`}>{sign}</span>
       </h3>
       <p>{title}</p>
@@ -19,7 +18,8 @@ const CounterItem = (props) => {
         </div>
       )}
     </div>
-    //{/* <!-- COUNTER ITEM END --> */}
+
+
   );
 };
 

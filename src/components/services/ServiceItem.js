@@ -1,11 +1,12 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
 
 const ServiceItem = (props) => {
   const { image, title, description, more } = props;
 
   return (
-    // {/* <!-- SERVICE ITEM START --> */}
+    
     <div className="home-service-item fluid-height">
       <div className="home-service-details full-height">
         <div className="home-service-image">
@@ -18,7 +19,8 @@ const ServiceItem = (props) => {
         </div>
       </div>
     </div>
-    // {/* <!-- SERVICE ITEM END --> */}
+   
+
   );
 };
 
