@@ -82,7 +82,7 @@ const LoginForm = () => {
                   as={MaskInput}
                   maskChar="_"
                   mask="000-00-0000"
-                  alwaysShowMask
+                  showMask
                 />
                 <Form.Control.Feedback type="invalid">
                   {formik.errors.ssn}

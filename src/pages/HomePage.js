@@ -4,7 +4,6 @@ import Topbar from "../components/common/Topbar";
 import Banner from "../components/home/banner/Banner";
 import BannerContact from "../components/home/banner/BannerContact";
 import Counters from "../components/home/counter/Counters";
-import Features from "../components/home/Features";
 import HomeAbout from "../components/home/HomeAbout";
 import Facility from "../components/home/Facility";
 import Features from "../components/home/Features";
@@ -13,11 +12,10 @@ import HomePricing from "../components/home/HomePricing";
 import Testimonals from "../components/home/testimonal/Testimonals";
 import HomeService from "../components/home/HomeService";
 
-
 const HomePage = () => {
   return (
     <>
-      <Topbar/>
+      <Topbar />
       <Banner />
       <BannerContact />
       <Features />
@@ -29,7 +27,6 @@ const HomePage = () => {
       <HomeContact />
       <Testimonals />
       <Footer />
-
     </>
   );
 };
