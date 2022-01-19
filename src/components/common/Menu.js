@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import UserMenu from "./UserMenu";
 
 const Menu = () => {
@@ -15,33 +16,32 @@ const Menu = () => {
           >
             <ul className="navbar-nav mx-auto">
               <li className="nav-item">
-                <a href="#" className="nav-link active">
+                <Link to="/" className="nav-link active">
                   Home
-                </a>
+                </Link>
               </li>
-
               <li className="nav-item">
-                <a href="about-us.html" className="nav-link">
+                <Link to="/about" className="nav-link">
                   About Us
-                </a>
+                </Link>
               </li>
 
               <li className="nav-item">
-                <a href="services.html" className="nav-link">
+                <Link to="/service" className="nav-link">
                   Services
-                </a>
+                </Link>
               </li>
 
               <li className="nav-item">
-                <a href="pricing.html" className="nav-link">
+                <Link to="/pricing" className="nav-link">
                   Pricing
-                </a>
+                </Link>
               </li>
 
               <li className="nav-item">
-                <a href="contact-us.html" className="nav-link">
+                <Link to="/contact" className="nav-link">
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
