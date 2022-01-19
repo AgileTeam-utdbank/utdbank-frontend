@@ -3,30 +3,33 @@ import Footer from "../components/common/Footer";
 import Topbar from "../components/common/Topbar";
 import Banner from "../components/home/banner/Banner";
 import BannerContact from "../components/home/banner/BannerContact";
-import Counter from "../components/home/counter/Counter";
+import Counters from "../components/home/counter/Counters";
+import Features from "../components/home/Features";
+import HomeAbout from "../components/home/HomeAbout";
 import Facility from "../components/home/Facility";
 import Features from "../components/home/Features";
-import HomeAbout from "../components/home/homeabout/HomeAbout";
 import HomeContact from "../components/home/HomeContact";
-import Pricing from "../components/home/pricing/Pricing";
-import Testimonal from "../components/home/testimonal/Testimonal";
-import HomeServices from "../components/home/services/HomeServices";
+import HomePricing from "../components/home/HomePricing";
+import Testimonals from "../components/home/testimonal/Testimonals";
+import HomeService from "../components/home/HomeService";
+
 
 const HomePage = () => {
   return (
     <>
-      <Topbar />
+      <Topbar/>
       <Banner />
       <BannerContact />
       <Features />
       <HomeAbout />
-      <Counter />
-      <HomeServices />
-      <Pricing />
+      <Counters />
+      <HomeService />
+      <HomePricing />
       <Facility />
       <HomeContact />
-      <Testimonal />
+      <Testimonals />
       <Footer />
+
     </>
   );
 };
