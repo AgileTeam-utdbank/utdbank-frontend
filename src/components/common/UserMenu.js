@@ -1,19 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserMenu = () => {
   return (
+    // <!-- USER MENU START -->
     <div className="navbar-option">
       <div className="navbar-option-item">
-        <a
-          href="authentication.html"
+        <Link
+          to="/authentication"
           className="btn1 blue-gradient btn-with-image text-nowrap"
         >
           <i className="flaticon-login"></i>
           <i className="flaticon-login"></i>
           Sign Up / Login
-        </a>
+        </Link>
       </div>
     </div>
+    // <!-- USER MENU END -->
   );
 };
 

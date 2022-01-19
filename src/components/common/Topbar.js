@@ -1,26 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Menu from "./Menu";
 
 const Topbar = () => {
   return (
+    // <!-- TOP BAR START -->
     <div className="fixed-top">
       <div className="navbar-area">
         <div className="mobile-nav">
-          <a href="index.html" className="logo">
+          <Link to="/" className="logo">
             <img src="assets/images/logo.png" alt="logo" />
-          </a>
+          </Link>
+
           <div className="navbar-option">
             <div className="navbar-option-item">
-              <a href="authentication.html">
+              <Link to="/authentication">
                 <i className="flaticon-login"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
 
+        {/* <!-- MENU START--> */}
         <Menu />
+        {/* <!-- MENU END--> */}
       </div>
     </div>
+    // <!-- TOP BAR END -->
   );
 };
 
