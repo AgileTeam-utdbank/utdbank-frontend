@@ -21,15 +21,4 @@ const getTransferById = (transferId) => {
   });
 };
 
-const downloadTransfers = () => {
-  return axios.get(`${API_URL}excel/download/transfer`, {
-    headers: {
-      ...authHeader(),
-      "Content-Type":
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    },
-    responseType: "arraybuffer",
-  });
-};
-
-export { createTransfer, getTransfers, getTransferById, downloadTransfers };
+export { createTransfer, getTransfers, getTransferById };
