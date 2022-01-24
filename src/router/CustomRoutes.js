@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import ForgetPasswordPage from "../pages/ForgetPasswordPage";
-import AuthenticationPage from "../pages/Authentication";
+import AuthenticationPage from "../pages/AuthenticationPage";
 import FaqsPage from "../pages/FaqsPage";
 import ServicePage from "../pages/ServicePage";
 import PricingPage from "../pages/PricingPage";
@@ -10,7 +10,7 @@ import AboutUsPage from "../pages/AboutUsPage";
 import ContactPage from "../pages/ContactPage";
 import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
 import TermsPage from "../pages/TermsPage";
-import PrivateRoute from "./PrivateRoutes";
+import PrivateRoute from "./PrivateRoute";
 import ProfilePage from "../pages/user/ProfilePage";
 import TransfersPage from "../pages/user/TransfersPage";
 import TransfersNewPage from "../pages/user/TransfersNewPage";
@@ -33,7 +33,6 @@ const CustomRoutes = () => {
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/about" element={<AboutUsPage />} />
       <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<HomePage />} />
 
       {/* CUSTOMER ROUTES */}
       <Route
