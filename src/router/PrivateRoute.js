@@ -1,15 +1,12 @@
 import React from "react";
 import { Navigate } from "react-router";
 import { useStore } from "../store";
-import { isAdmin } from "../utils/auth";
 
-const PrivateRoute = ({ children, admin }) => {
+const PrivateRoute = ({ children }) => {
   const { userState } = useStore();
-  const { isUserLogin, user } = userState;
+  const { isUserLogin } = userState;
 
   if (!isUserLogin) return <Navigate to="/login" />;
-
-  if (admin && !isAdmin(user.roles)) return <Navigate to="/not-authorized" />;
 
   return children;
 };

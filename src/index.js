@@ -6,8 +6,11 @@ import reportWebVitals from "./reportWebVitals";
 
 import { StoreProvider } from "./store";
 
+import "bootstrap/dist/css/bootstrap.min.css";
 import "alertifyjs/build/css/alertify.min.css";
 import "react-toastify/dist/ReactToastify.min.css";
+
+import "./assets/css/style.css";
 
 ReactDOM.render(
   <React.StrictMode>
