@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react"
-import { Table, Spinner, Button, ButtonGroup } from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom"
-import { getAccounts } from "../../api/accounts-service"
+import { Table } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
+
+import { getAllAccounts } from "../../api/admin-service"
+import { isManager } from "../../utils/auth"
+
 const Accounts = () => {
+  const [accounts, setAccounts] = useState([])
   const [loading, setLoading] = useState(true)
-  const [Accounts, setAccounts] = useState([])
   const navigate = useNavigate()
-  const showDetails = (id) => {
-    navigate(`/account/${id}/user`)
+
+  const showDetails = (accountNo) => {
+    navigate(`/account/${accountNo}/manager`)
   }
+
   useEffect(() => {
-    getAccounts().then((resp) => {
-      console.log(resp.data)
+    getAllAccounts().then((resp) => {
       setAccounts(resp.data)
       setLoading(false)
     })
   }, [])
+
   return (
     <>
-      <ButtonGroup aria-label="Basic example" className="p-3 ">
-        <Button variant="primary" as={Link} to="/account/create">
-          New account
-        </Button>
-      </ButtonGroup>
       <Table striped bordered hover responsive>
         <thead>
           <tr>
@@ -38,17 +38,11 @@ const Accounts = () => {
         <tbody>
           {loading && (
             <tr>
-              <td colSpan={5}>
-                <Spinner animation="border" size="sm" /> Loading...
-              </td>
+              <td colSpan={6}>Loading...</td>
             </tr>
           )}
-          {Accounts.map((item, index) => (
-            <tr
-              key={index}
-              onClick={() => showDetails(item.accountNo)}
-              className="cursor-hand"
-            >
+          {accounts.map((item, index) => (
+            <tr key={index} onClick={() => showDetails(item.accountNo)}>
               <td style={{ cursor: "pointer" }}>{index + 1}</td>
               <td style={{ cursor: "pointer" }}>{item.description}</td>
               <td style={{ cursor: "pointer" }}>{item.balance}</td>
@@ -63,4 +57,5 @@ const Accounts = () => {
     </>
   )
 }
+
 export default Accounts

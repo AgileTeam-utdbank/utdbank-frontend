@@ -10,19 +10,74 @@ import AboutUsPage from "../pages/AboutUsPage";
 import ContactPage from "../pages/ContactPage";
 import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
 import TermsPage from "../pages/TermsPage";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "./PrivateRoutes";
 import ProfilePage from "../pages/user/ProfilePage";
 import TransfersPage from "../pages/user/TransfersPage";
 import TransfersNewPage from "../pages/user/TransfersNewPage";
 import AccountsPage from "../pages/user/AccountsPage";
+import AccountsPageEmployee from "../pages/employee/AccountsPage";
+import AccountsPageManager from "../pages/manager/AccountsPage";
 import AccountsNewPage from "../pages/user/AccountsNewPage";
-import AccountDetailsPage from "../pages/user/AccountDetailsPage";
 import TransferDetailsPage from "../pages/user/TransferDetailsPage";
+import AccountEditPage from "../pages/user/AccountEditPage";
+import AccountsEditPageEmployee from "../pages/employee/AccountsEditPage";
+import AccountsEditPageManager from "../pages/manager/AccountsEditPage";
+import AccountsByUserIdPage from "../pages/employee/AccountByUserIdPage";
+import AccountCreateByUserId from "../components/employee/AccountCraeteByUserId";
+import AccountCreateByUserIdPage from "../pages/employee/AccountCreateByUserIdPage";
 
 const CustomRoutes = () => {
   return (
     <Routes>
-      {/* VISITOR ROUTES */}
+      <Route
+        path="/account/:accountNo/manager"
+        element={
+          <PrivateRoute manager={true}>
+            <AccountsEditPageManager />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/manager/accounts"
+        element={
+          <PrivateRoute manager={true}>
+            <AccountsPageManager />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/account/:accountNo/employee"
+        element={
+          <PrivateRoute employee={true}>
+            <AccountsEditPageEmployee />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/employee/accounts"
+        element={
+          <PrivateRoute employee={true}>
+            <AccountsPageEmployee />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="account/user/:userId/employee"
+        element={
+          <PrivateRoute employee={true}>
+            <AccountsByUserIdPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="account/:userId/create"
+        element={
+          <PrivateRoute employee={true}>
+            <AccountCreateByUserIdPage />
+          </PrivateRoute>
+        }
+      />
+      <Route path="/authentication" element={<AuthenticationPage />} />
       <Route path="/authentication" element={<AuthenticationPage />} />
       <Route path="/forgetpassword" element={<ForgetPasswordPage />} />
       <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
@@ -77,13 +132,14 @@ const CustomRoutes = () => {
         }
       />
       <Route
-        path="/account/:accountId"
+        path="/account/:accountNo/user"
         element={
           <PrivateRoute>
-            <AccountDetailsPage />
+            <AccountEditPage />
           </PrivateRoute>
         }
       />
+
       <Route
         path="/transfer/:transferId"
         element={
