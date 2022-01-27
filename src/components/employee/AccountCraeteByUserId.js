@@ -1,8 +1,7 @@
-import React, { useState } from "react"
-import * as Yup from "yup"
-import { toast } from "react-toastify"
-import { useFormik } from "formik"
-import MaskInput from "react-maskinput"
+import React, { useState } from "react";
+import * as Yup from "yup";
+import { toast } from "react-toastify";
+import { useFormik } from "formik";
 import {
   Form,
   Button,
@@ -12,46 +11,47 @@ import {
   ButtonGroup,
   Card,
   FormCheck,
-} from "react-bootstrap"
-import { createAccount } from "../../api/accounts-service"
-import { useNavigate } from "react-router-dom"
-const AccountNew = () => {
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+} from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
+import { createAccountByUserId } from "../../api/admin-service";
+const AccountCreateByUserId = () => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { userId } = useParams();
   const initialValues = {
     description: "",
-    balance: "",
+    balance: 0,
     currencyCode: "",
     accountType: "",
-    accountStatusType: "",
-  }
+  };
   const validationSchema = Yup.object({
     description: Yup.string().required("Please enter a account description"),
-    balance: Yup.string().required(""),
+    balance: Yup.number().required(""),
     currencyCode: Yup.string().required("Please enter currency code"),
     accountType: Yup.string().required("Please enter account type"),
-    accountStatusType: Yup.string().required(""),
-  })
+  });
   const onSubmit = (values) => {
-    setLoading(true)
-    createAccount(values)
+    console.log(values);
+    setLoading(true);
+
+    createAccountByUserId(values, userId)
       .then((resp) => {
-        setLoading(false)
-        toast("Account has been created successfully")
-        navigate("/account")
+        setLoading(false);
+        console.log(values);
+        toast("Account has been created successfully");
+        navigate(`/account/user/id/employee`);
       })
       .catch((err) => {
-        toast("An error occured")
-        console.log(err.response.data.message)
-        setLoading(false)
-      })
-  }
+        toast(err.response.data.message);
+        setLoading(false);
+      });
+  };
   const formik = useFormik({
     enableReinitialize: true,
     initialValues,
     validationSchema,
     onSubmit,
-  })
+  });
   return (
     <Form noValidate onSubmit={formik.handleSubmit}>
       <Card>
@@ -63,7 +63,6 @@ const AccountNew = () => {
                 className="p-2"
                 style={{ border: "0.25px solid" }}
                 type="text"
-                placeholder="Enter from account description"
                 {...formik.getFieldProps("description")}
                 isInvalid={!!formik.errors.description}
               />
@@ -121,24 +120,6 @@ const AccountNew = () => {
                 {formik.errors.accountType}
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group as={Col} md={4} lg={3} className="mb-3">
-              <Form.Label>Account Status Type</Form.Label>
-              <Form.Select
-                className="p-2"
-                style={{ border: "0.25px solid" }}
-                type="text"
-                {...formik.getFieldProps("accountStatusType")}
-                isInvalid={!!formik.errors.accountStatusType}
-              >
-                <option>Please enter account status type</option>
-                <option>SUSPENDED</option>
-                <option>CLOSED</option>
-                <option>ACTIVE</option>
-              </Form.Select>
-              <Form.Control.Feedback type="invalid">
-                {formik.errors.accountStatusType}
-              </Form.Control.Feedback>
-            </Form.Group>
           </Row>
           <div className="text-end">
             <ButtonGroup aria-label="Basic example">
@@ -149,7 +130,7 @@ const AccountNew = () => {
                 variant="secondary"
                 type="button"
                 variant="secondary"
-                onClick={() => navigate("/account")}
+                onClick={() => navigate(-1)}
               >
                 Cancel
               </Button>
@@ -158,6 +139,6 @@ const AccountNew = () => {
         </Card.Body>
       </Card>
     </Form>
-  )
-}
-export default AccountNew
+  );
+};
+export default AccountCreateByUserId;
