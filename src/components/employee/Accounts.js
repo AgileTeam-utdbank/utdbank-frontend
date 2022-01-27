@@ -20,6 +20,7 @@ const Accounts = () => {
   useEffect(() => {
     getAllAccounts().then((resp) => {
       setAccounts(resp.data);
+      console.log(resp.data);
       setLoading(false);
     });
   }, []);
@@ -30,12 +31,12 @@ const Accounts = () => {
         <thead>
           <tr>
             <th>#</th>
-            <th>Description</th>
+            <th>Account No</th>
             <th>Balance</th>
             <th>Currency Code</th>
             <th>Account Type</th>
             <th>Account Status Type</th>
-            <th>Account No</th>
+            <th>Description</th>
             <th>User Id</th>
           </tr>
         </thead>
@@ -48,17 +49,17 @@ const Accounts = () => {
           {accounts.map((item, index) => (
             <tr key={index}>
               <td style={{ cursor: "pointer" }}>{index + 1}</td>
-              <td style={{ cursor: "pointer" }}>{item.description}</td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => showDetails(item.accountNo)}
+              >
+                {item.accountNo}
+              </td>
               <td style={{ cursor: "pointer" }}>{item.balance}</td>
               <td style={{ cursor: "pointer" }}>{item.currencyCode} </td>
               <td style={{ cursor: "pointer" }}>{item.accountType}</td>
               <td style={{ cursor: "pointer" }}>{item.accountStatusType}</td>
-              <td
-                onClick={() => showDetails(item.accountNo)}
-                style={{ cursor: "pointer" }}
-              >
-                {item.accountNo}
-              </td>
+              <td style={{ cursor: "pointer" }}>{item.description}</td>
               <td
                 onClick={() => showDetailsById(item.userId)}
                 style={{ cursor: "pointer" }}
