@@ -34,12 +34,12 @@ const AccountCreateByUserId = () => {
     console.log(values);
     setLoading(true);
 
-    createAccountByUserId(values, userId)
+    createAccountByUserId(userId, values)
       .then((resp) => {
         setLoading(false);
         console.log(values);
         toast("Account has been created successfully");
-        navigate(`/account/user/id/employee`);
+        navigate(`/account/user/${userId}/employee`);
       })
       .catch((err) => {
         toast(err.response.data.message);

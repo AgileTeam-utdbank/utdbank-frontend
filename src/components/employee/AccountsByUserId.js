@@ -43,7 +43,12 @@ const AccountsByUserId = () => {
           {accounts.map((item, index) => (
             <tr key={index}>
               <td>{item.id}</td>
-              <td>{item.accountNo}</td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.accountNo}
+              </td>
               <td>{item.description} </td>
               <td>{item.balance}</td>
               <td>{item.currencyCode}</td>

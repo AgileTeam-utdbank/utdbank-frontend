@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react"
-import * as Yup from "yup"
-import { toast } from "react-toastify"
-import { useFormik } from "formik"
-import { Form, Button, Spinner, Row, Col, ButtonGroup } from "react-bootstrap"
-import alertify from "alertifyjs"
-import { useNavigate, useParams } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import * as Yup from "yup";
+import { toast } from "react-toastify";
+import { useFormik } from "formik";
+import { Form, Button, Spinner, Row, Col, ButtonGroup } from "react-bootstrap";
+import alertify from "alertifyjs";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   deleteAccounts,
   getAccountByAccountNo,
   updateAccounts,
-} from "../../api/admin-service"
+} from "../../api/admin-service";
 const AccountsEdit = () => {
   const [initialValues, setInitialValues] = useState({
     description: "",
@@ -17,68 +17,68 @@ const AccountsEdit = () => {
     accountType: "",
     accountStatusType: "",
     balance: 0,
-  })
-  const [loading, setLoading] = useState(false)
-  const { accountNo } = useParams()
-  const navigate = useNavigate()
+  });
+  const [loading, setLoading] = useState(false);
+  const { accountNo } = useParams();
+  const navigate = useNavigate();
   const validationSchema = Yup.object({
     description: Yup.string().required("Enter a description"),
     currencyCode: Yup.string().required("Enter the currency code"),
     accountType: Yup.string().required("Enter the account type"),
     accountStatusType: Yup.string().required("Select the account status type"),
     balance: Yup.number().required("Select the account status type"),
-  })
+  });
   const onSubmit = (values) => {
-    setLoading(true)
+    setLoading(true);
     const accountDto = {
       description: values.description,
       currencyCode: values.currencyCode,
       accountType: values.accountType,
       accountStatusType: values.accountStatusType,
       balance: values.balance,
-    }
+    };
     updateAccounts(accountNo, accountDto)
       .then((resp) => {
-        setLoading(false)
-        toast("The account was updated successfully")
-        navigate("/employee/accounts")
+        setLoading(false);
+        toast("The account was updated successfully");
+        navigate("/employee/accounts");
       })
       .catch((err) => {
-        toast("An error occured while updating the Account")
-        console.log(err.response.data.message)
-        setLoading(false)
-      })
-  }
+        toast("An error occured while updating the Account");
+        console.log(err.response.data.message);
+        setLoading(false);
+      });
+  };
   const formik = useFormik({
     enableReinitialize: true,
     initialValues,
     validationSchema,
     onSubmit,
-  })
+  });
   const handleDelete = () => {
     alertify.confirm(
       "Delete",
       "Are you sure want to delete?",
       () => {
-        setLoading(true)
+        setLoading(true);
         deleteAccounts(accountNo)
           .then((resp) => {
-            toast("The account was deleted successfully")
-            setLoading(false)
-            navigate("/employee/accounts")
+            toast("The account was deleted successfully");
+            setLoading(false);
+            navigate("/employee/accounts");
           })
           .catch((err) => {
-            toast(err.response.data.message)
-            console.log(err.response.data.message)
-            setLoading(false)
-          })
+            toast(err.response.data.message);
+            console.log(err.response.data.message);
+            setLoading(false);
+          });
       },
       () => {}
-    )
-  }
+    );
+  };
   const loadAccount = (values) => {
     getAccountByAccountNo(accountNo, values).then((resp) => {
-      console.log(resp.data)
+      console.log(resp.data);
       const {
         description,
         currencyCode,
@@ -86,7 +86,7 @@ const AccountsEdit = () => {
         accountStatusType,
         balance,
         accountNo,
-      } = resp.data
+      } = resp.data;
       const accountDto = {
         description: description,
         currencyCode: currencyCode,
@@ -94,13 +94,13 @@ const AccountsEdit = () => {
         accountStatusType: accountStatusType,
         balance: balance,
         accountNo: accountNo,
-      }
-      setInitialValues(accountDto)
-    })
-  }
+      };
+      setInitialValues(accountDto);
+    });
+  };
   useEffect(() => {
-    loadAccount()
-  }, [])
+    loadAccount();
+  }, []);
   return (
     <Form noValidate onSubmit={formik.handleSubmit}>
       <Row>
@@ -216,7 +216,7 @@ const AccountsEdit = () => {
           <Button
             variant="secondary"
             type="button"
-            onClick={() => navigate("/manager/accounts")}
+            onClick={() => navigate("/employee/accounts")}
           >
             Cancel
           </Button>
@@ -231,6 +231,6 @@ const AccountsEdit = () => {
         </ButtonGroup>
       </div>
     </Form>
-  )
-}
-export default AccountsEdit
+  );
+};
+export default AccountsEdit;
