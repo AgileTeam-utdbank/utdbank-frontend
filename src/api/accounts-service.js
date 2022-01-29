@@ -12,7 +12,7 @@ const getAccounts = () => {
   });
 };
 const getAccountById = (accountId) => {
-  return axios.get(`${API_URL}account/[${accountId}]/user`, {
+  return axios.get(`${API_URL}account/${accountId}/user`, {
     headers: authHeader(),
   });
 };
