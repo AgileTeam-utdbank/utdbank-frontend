@@ -38,6 +38,25 @@ const CustomRoutes = () => {
   return (
     <Routes>
       {/* MANAGER ROUTES */}
+
+      <Route
+        path="/manager/user/:userId"
+        element={
+          <PrivateRoute admin={true}>
+            <UserEditPageManager />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/manager/users"
+        element={
+          <PrivateRoute admin={true}>
+            <UsersPageManager />
+          </PrivateRoute>
+        }
+      />
+
       <Route
         path="/transfer/:id/manager"
         element={
@@ -88,6 +107,25 @@ const CustomRoutes = () => {
       />
 
       {/* EMPLOYEE ROUTES */}
+
+      <Route
+        path="/employee/user/:userId"
+        element={
+          <PrivateRoute admin={true}>
+            <UserEditPage />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/employee/users"
+        element={
+          <PrivateRoute admin={true}>
+            <UsersPage />
+          </PrivateRoute>
+        }
+      />
+
       <Route
         path="/transfer/:id/employee"
         element={
