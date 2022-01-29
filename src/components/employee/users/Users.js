@@ -10,6 +10,7 @@ import {
   Container,
   Card,
 } from "react-bootstrap";
+import MaskInput from "react-maskinput/lib";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllUser, searchUsers } from "../../../api/admin-user-service";
 
@@ -128,9 +129,11 @@ const Users = () => {
                     className="search"
                     type="text"
                     placeholder="Search..."
+                    as={MaskInput}
                     maskChar="_"
                     mask="000-00-0000"
                     showMask
+                    alwaysShowMask
                     value={searchSSN}
                     onChange={handleOnChangeSSN}
                   />
@@ -177,7 +180,6 @@ const Users = () => {
                     }}
                     className="search"
                     type="text"
-                    autoFocus="autofocus"
                     placeholder="Search..."
                     value={searchLastName}
                     onChange={handleOnChangelastName}
@@ -201,7 +203,6 @@ const Users = () => {
                     }}
                     className="search"
                     type="text"
-                    autoFocus="autofocus"
                     placeholder="Search..."
                     value={searchEmail}
                     onChange={handleOnChangeEmail}

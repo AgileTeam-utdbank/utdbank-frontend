@@ -33,6 +33,10 @@ import AllTransfersPageManager from "../pages/manager/transfers/AllTransfersPage
 import TransferDetailsPageManager from "../pages/manager/transfers/TransferDetailsPageManager";
 import TransfersByAccountNoPageManager from "../pages/manager/transfers/TransfersByAccountNoPageManager";
 import TransfersByUserIdPageManager from "../pages/manager/transfers/TransfersByUserIdPageManager";
+import UserEditPageManager from "../pages/manager/users/UserEditPageManager";
+import UsersPageManager from "../pages/manager/users/UsersPageManager";
+import UserEditPage from "../pages/employee/users/UserEditPage";
+import UsersPage from "../pages/employee/users/UsersPage";
 
 const CustomRoutes = () => {
   return (
