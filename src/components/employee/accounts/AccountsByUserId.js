@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, ButtonGroup, Table } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 
 import { getAccountByUserId } from "../../../api/admin-service";
@@ -32,6 +32,8 @@ const AccountsByUserId = () => {
             <th>Account Type</th>
             <th>Account Status Type</th>
             <th>Account Created Date</th>
+            <th>Detail</th>
+            <th>Transfers</th>
           </tr>
         </thead>
         <tbody>
@@ -55,6 +57,19 @@ const AccountsByUserId = () => {
               <td>{item.accountType}</td>
               <td>{item.accountStatusType}</td>
               <td>{moment(item.createdDate).format("MM/DD/YYYY HH:mm:ss")}</td>
+              <td>
+                <Button as={Link} to={`/account/${item.accountNo}/employee`}>
+                  Details
+                </Button>
+              </td>
+              <td>
+                <Button
+                  as={Link}
+                  to={`/transfer/${item.accountNo}/accountNo/employee`}
+                >
+                  Transfers
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -73,7 +88,7 @@ const AccountsByUserId = () => {
           variant="secondary"
           onClick={() => navigate(-1)}
         >
-          Back to Accounts
+          Back to Users
         </Button>
       </ButtonGroup>
     </>

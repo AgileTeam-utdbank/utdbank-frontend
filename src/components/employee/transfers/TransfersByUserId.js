@@ -2,7 +2,7 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Table, Spinner, Container, Button } from "react-bootstrap";
 import { FiArrowLeft } from "react-icons/fi";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getTransfersByUserId } from "../../../api/admin-transfers-service";
 
 const TransfersByUserId = () => {
@@ -20,12 +20,8 @@ const TransfersByUserId = () => {
   }, []);
   return (
     <Container>
-      <Button
-        variant="secondary"
-        className="mb-3"
-        onClick={() => navigate("/transfer/employee/all")}
-      >
-        <FiArrowLeft /> Back to transfers
+      <Button variant="secondary" className="mb-3" onClick={() => navigate(-1)}>
+        <FiArrowLeft /> Back
       </Button>
       <Table striped bordered hover responsive>
         <thead>
@@ -38,6 +34,7 @@ const TransfersByUserId = () => {
             <th>Currency</th>
             <th>Description</th>
             <th>Transaction Date</th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody>
@@ -58,6 +55,11 @@ const TransfersByUserId = () => {
               <td>{item.currencyCode}</td>
               <td>{item.description}</td>
               <td>{moment(item.transactionDate).format("lll")}</td>
+              <td>
+                <Button as={Link} to={`/transfer/${item.id}/employee`}>
+                  Details
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
