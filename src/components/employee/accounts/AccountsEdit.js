@@ -216,7 +216,7 @@ const AccountsEdit = () => {
           <Button
             variant="secondary"
             type="button"
-            onClick={() => navigate("/employee/accounts")}
+            onClick={() => navigate(-1)}
           >
             Cancel
           </Button>

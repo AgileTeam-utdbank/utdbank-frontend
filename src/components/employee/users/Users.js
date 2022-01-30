@@ -230,6 +230,7 @@ const Users = () => {
             <th>Email</th>
             <th>Phone</th>
             <th>Roles</th>
+            <th>Accounts</th>
           </tr>
         </thead>
         <tbody>
@@ -241,18 +242,26 @@ const Users = () => {
             </tr>
           ) : (
             users.map((user, index) => (
-              <tr
-                key={index}
-                onClick={() => handleEdit(user.id)}
-                className="cursor-hand"
-              >
-                <td>{index + 1}</td>
-                <td>{user.ssn}</td>
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
-                <td>{user.email}</td>
-                <td>{user.mobilePhoneNumber}</td>
-                <td>{user.roles.join(" ")}</td>
+              <tr key={index} className="cursor-hand">
+                <td onClick={() => handleEdit(user.id)}>{index + 1}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.ssn}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.firstName}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.lastName}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.email}</td>
+                <td onClick={() => handleEdit(user.id)}>
+                  {user.mobilePhoneNumber}
+                </td>
+                <td onClick={() => handleEdit(user.id)}>
+                  {user.roles.join(" ")}
+                </td>
+                <td>
+                  <Button as={Link} to={`/account/user/${user.id}/employee`}>
+                    Accounts
+                  </Button>
+                  <Button as={Link} to={`/transfer/user/${user.id}/employee`}>
+                    Transfers
+                  </Button>
+                </td>
               </tr>
             ))
           )}

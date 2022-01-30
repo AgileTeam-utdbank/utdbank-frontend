@@ -26,7 +26,7 @@ const TransferDetails = () => {
           <Button
             variant="secondary"
             className="mb-3"
-            onClick={() => navigate("/transfer/employee/all")}
+            onClick={() => navigate(-1)}
           >
             <FiArrowLeft /> Back to transfers
           </Button>
