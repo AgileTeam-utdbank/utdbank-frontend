@@ -33,11 +33,34 @@ import AllTransfersPageManager from "../pages/manager/transfers/AllTransfersPage
 import TransferDetailsPageManager from "../pages/manager/transfers/TransferDetailsPageManager";
 import TransfersByAccountNoPageManager from "../pages/manager/transfers/TransfersByAccountNoPageManager";
 import TransfersByUserIdPageManager from "../pages/manager/transfers/TransfersByUserIdPageManager";
+import UserEditPageManager from "../pages/manager/users/UserEditPageManager";
+import UsersPageManager from "../pages/manager/users/UsersPageManager";
+import UserEditPage from "../pages/employee/users/UserEditPage";
+import UsersPage from "../pages/employee/users/UsersPage";
 
 const CustomRoutes = () => {
   return (
     <Routes>
       {/* MANAGER ROUTES */}
+
+      <Route
+        path="/manager/user/:userId"
+        element={
+          <PrivateRoute admin={true}>
+            <UserEditPageManager />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/manager/users"
+        element={
+          <PrivateRoute admin={true}>
+            <UsersPageManager />
+          </PrivateRoute>
+        }
+      />
+
       <Route
         path="/transfer/:id/manager"
         element={
@@ -88,6 +111,25 @@ const CustomRoutes = () => {
       />
 
       {/* EMPLOYEE ROUTES */}
+
+      <Route
+        path="/employee/user/:userId"
+        element={
+          <PrivateRoute admin={true}>
+            <UserEditPage />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/employee/users"
+        element={
+          <PrivateRoute admin={true}>
+            <UsersPage />
+          </PrivateRoute>
+        }
+      />
+
       <Route
         path="/transfer/:id/employee"
         element={
