@@ -10,7 +10,7 @@ import {
   getAccountById,
   updateAccount,
 } from "../../api/accounts-service";
-const AccountEdit = () => {
+const AccountEdit = ({}) => {
   const [initialValues, setInitialValues] = useState({
     description: "",
     currencyCode: "",
