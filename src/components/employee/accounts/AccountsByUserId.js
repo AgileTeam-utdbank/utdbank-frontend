@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { Button, ButtonGroup, Table } from "react-bootstrap";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import moment from "moment";
+import React, { useEffect, useState } from "react"
+import { Button, ButtonGroup, Table } from "react-bootstrap"
+import { Link, useNavigate, useParams } from "react-router-dom"
+import moment from "moment"
 
-import { getAccountByUserId } from "../../../api/admin-service";
+import { getAccountByUserId } from "../../../api/admin-service"
 
 const AccountsByUserId = () => {
-  const [accounts, setAccounts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-  const { userId } = useParams();
+  const [accounts, setAccounts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const navigate = useNavigate()
+  const { userId } = useParams()
 
   useEffect(() => {
     getAccountByUserId(userId).then((resp) => {
-      setAccounts(resp.data);
-      console.log(resp.data);
-      setLoading(false);
-    });
-  }, []);
+      setAccounts(resp.data)
+      console.log(resp.data)
+      setLoading(false)
+    })
+  }, [])
 
   return (
     <>
@@ -76,23 +76,18 @@ const AccountsByUserId = () => {
       </Table>
       <ButtonGroup aria-label="Basic example">
         <Button
-          onClick={() => navigate(`/account/${userId}/create`)}
+          onClick={() => navigate(`/account/${userId}/create/employee`)}
           variant="primary"
           disabled={loading}
         >
           New Account
         </Button>
-        <Button
-          variant="secondary"
-          type="button"
-          variant="secondary"
-          onClick={() => navigate(-1)}
-        >
+        <Button variant="secondary" type="button" onClick={() => navigate(-1)}>
           Back to Users
         </Button>
       </ButtonGroup>
     </>
-  );
-};
+  )
+}
 
-export default AccountsByUserId;
+export default AccountsByUserId

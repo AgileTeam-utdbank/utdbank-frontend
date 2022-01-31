@@ -1,7 +1,7 @@
-import { BrowserRouter } from "react-router-dom";
-import "./App.css";
-import { ToastContainer } from "react-toastify";
-import CustomRoutes from "./router/CustomRoutes";
+import { BrowserRouter } from "react-router-dom"
+import "./App.css"
+import { ToastContainer } from "react-toastify"
+import CustomRoutes from "./router/CustomRoutes"
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <ToastContainer />
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
