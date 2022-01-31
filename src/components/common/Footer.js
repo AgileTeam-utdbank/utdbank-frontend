@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import ScrollToTopOnMount from "./ScrollToTopOnMount";
 
 const Footer = () => {
   return (
     <footer className="footer-bg">
       <div className="container">
+        <ScrollToTopOnMount />
         <div className="footer-upper">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-4">
