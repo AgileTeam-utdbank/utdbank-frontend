@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react"
-import { Button, ButtonGroup, Table } from "react-bootstrap"
-import { Link, useNavigate, useParams } from "react-router-dom"
-import moment from "moment"
+import React, { useEffect, useState } from "react";
+import { Button, ButtonGroup, Table } from "react-bootstrap";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import moment from "moment";
 
-import { getAccountByUserId } from "../../../api/admin-service"
+import { getAccountByUserId } from "../../../api/admin-service";
 
 const AccountsByUserId = () => {
-  const [accounts, setAccounts] = useState([])
-  const [loading, setLoading] = useState(true)
-  const navigate = useNavigate()
-  const { userId } = useParams()
+  const [accounts, setAccounts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const { userId } = useParams();
 
   useEffect(() => {
     getAccountByUserId(userId).then((resp) => {
-      setAccounts(resp.data)
-      console.log(resp.data)
-      setLoading(false)
-    })
-  }, [])
+      setAccounts(resp.data);
+      console.log(resp.data);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <>
@@ -51,12 +51,42 @@ const AccountsByUserId = () => {
               >
                 {item.accountNo}
               </td>
-              <td>{item.description} </td>
-              <td>{item.balance}</td>
-              <td>{item.currencyCode}</td>
-              <td>{item.accountType}</td>
-              <td>{item.accountStatusType}</td>
-              <td>{moment(item.createdDate).format("MM/DD/YYYY HH:mm:ss")}</td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.description}{" "}
+              </td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.balance}
+              </td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.currencyCode}
+              </td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.accountType}
+              </td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.accountStatusType}
+              </td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {moment(item.createdDate).format("MM/DD/YYYY HH:mm:ss")}
+              </td>
               <td>
                 <Button as={Link} to={`/account/${item.accountNo}/employee`}>
                   Details
@@ -87,7 +117,7 @@ const AccountsByUserId = () => {
         </Button>
       </ButtonGroup>
     </>
-  )
-}
+  );
+};
 
-export default AccountsByUserId
+export default AccountsByUserId;
