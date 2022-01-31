@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import * as Yup from "yup";
-import { toast } from "react-toastify";
-import { useFormik } from "formik";
+import React, { useState } from "react"
+import * as Yup from "yup"
+import { toast } from "react-toastify"
+import { useFormik } from "formik"
 import {
   Form,
   Button,
@@ -11,47 +11,47 @@ import {
   ButtonGroup,
   Card,
   FormCheck,
-} from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
-import { createAccountByUserId } from "../../../api/admin-service";
+} from "react-bootstrap"
+import { useNavigate, useParams } from "react-router-dom"
+import { createAccountByUserId } from "../../../api/admin-service"
 const AccountCreateByUserId = () => {
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const { userId } = useParams();
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+  const { userId } = useParams()
   const initialValues = {
     description: "",
     balance: 0,
     currencyCode: "",
     accountType: "",
-  };
+  }
   const validationSchema = Yup.object({
     description: Yup.string().required("Please enter a account description"),
     balance: Yup.number().required(""),
     currencyCode: Yup.string().required("Please enter currency code"),
     accountType: Yup.string().required("Please enter account type"),
-  });
+  })
   const onSubmit = (values) => {
-    console.log(values);
-    setLoading(true);
+    console.log(values)
+    setLoading(true)
 
     createAccountByUserId(userId, values)
       .then((resp) => {
-        setLoading(false);
-        console.log(values);
-        toast("Account has been created successfully");
-        navigate(`/account/user/${userId}/employee`);
+        setLoading(false)
+        console.log(values)
+        toast("Account has been created successfully")
+        navigate(`/account/user/${userId}/manager`)
       })
       .catch((err) => {
-        toast(err.response.data.message);
-        setLoading(false);
-      });
-  };
+        toast(err.response.data.message)
+        setLoading(false)
+      })
+  }
   const formik = useFormik({
     enableReinitialize: true,
     initialValues,
     validationSchema,
     onSubmit,
-  });
+  })
   return (
     <Form noValidate onSubmit={formik.handleSubmit}>
       <Card>
@@ -129,7 +129,6 @@ const AccountCreateByUserId = () => {
               <Button
                 variant="secondary"
                 type="button"
-                variant="secondary"
                 onClick={() => navigate(-1)}
               >
                 Cancel
@@ -139,6 +138,6 @@ const AccountCreateByUserId = () => {
         </Card.Body>
       </Card>
     </Form>
-  );
-};
-export default AccountCreateByUserId;
+  )
+}
+export default AccountCreateByUserId
