@@ -98,7 +98,7 @@ const CustomRoutes = () => {
       <Route
         path="account/user/:userId/manager"
         element={
-          <PrivateRoute employee={true}>
+          <PrivateRoute manager={true}>
             <AccountsByUserIdPageManager />
           </PrivateRoute>
         }
@@ -248,7 +248,7 @@ const CustomRoutes = () => {
         }
       />
       <Route
-        path="/account/create"
+        path="/account/create/"
         element={
           <PrivateRoute>
             <AccountsNewPage />

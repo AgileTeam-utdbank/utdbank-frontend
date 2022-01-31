@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 import {
   Table,
   Button,
@@ -9,25 +9,25 @@ import {
   Col,
   Container,
   Card,
-} from "react-bootstrap";
-import MaskInput from "react-maskinput/lib";
-import { Link, useNavigate } from "react-router-dom";
-import { getAllUser, searchUsers } from "../../../api/admin-user-service";
+} from "react-bootstrap"
+import MaskInput from "react-maskinput/lib"
+import { Link, useNavigate } from "react-router-dom"
+import { getAllUser, searchUsers } from "../../../api/admin-user-service"
 
 const Users = () => {
-  const [loadingUsers, setLoadingUsers] = useState(true);
-  const [users, setUsers] = useState([]);
+  const [loadingUsers, setLoadingUsers] = useState(true)
+  const [users, setUsers] = useState([])
   //Search processs
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchSSN, setSearchSSN] = useState("");
-  const [searchFirstName, setSearchFirstName] = useState("");
-  const [searchLastName, setSearchLastName] = useState("");
-  const [searchEmail, setSearchEmail] = useState("");
-  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("")
+  const [searchSSN, setSearchSSN] = useState("")
+  const [searchFirstName, setSearchFirstName] = useState("")
+  const [searchLastName, setSearchLastName] = useState("")
+  const [searchEmail, setSearchEmail] = useState("")
+  const navigate = useNavigate()
 
   const handleOnSubmit = (e) => {
-    e.preventDefault();
-    console.log("handle submit ici: ");
+    e.preventDefault()
+    console.log("handle submit ici: ")
 
     console.log(
       searchSSN +
@@ -37,21 +37,21 @@ const Users = () => {
         searchLastName +
         "-" +
         searchEmail
-    );
+    )
 
     searchUsers(searchSSN, searchFirstName, searchLastName, searchEmail)
       .then((resp) => {
-        console.log(resp.data);
-        setUsers(resp.data);
-        setSearchSSN("");
-        setSearchFirstName("");
-        setSearchLastName("");
-        setSearchEmail("");
+        console.log(resp.data)
+        setUsers(resp.data)
+        setSearchSSN("")
+        setSearchFirstName("")
+        setSearchLastName("")
+        setSearchEmail("")
       })
       .catch((err) => {
-        console.log("search hatasi " + err.message);
-      });
-  };
+        console.log("search hatasi " + err.message)
+      })
+  }
   // handleChange for Search Processes
   /* const handleOnChange = (e) => {
     console.log(e.target.value);
@@ -59,35 +59,35 @@ const Users = () => {
   }; */
 
   const handleOnChangeSSN = (e) => {
-    console.log(e.target.value);
-    setSearchSSN(e.target.value);
-  };
+    console.log(e.target.value)
+    setSearchSSN(e.target.value)
+  }
   const handleOnChangeFirstName = (e) => {
-    console.log(e.target.value);
-    setSearchFirstName(e.target.value);
-  };
+    console.log(e.target.value)
+    setSearchFirstName(e.target.value)
+  }
   const handleOnChangelastName = (e) => {
-    console.log(e.target.value);
-    setSearchLastName(e.target.value);
-  };
+    console.log(e.target.value)
+    setSearchLastName(e.target.value)
+  }
   const handleOnChangeEmail = (e) => {
-    console.log(e.target.value);
-    setSearchEmail(e.target.value);
-  };
+    console.log(e.target.value)
+    setSearchEmail(e.target.value)
+  }
 
   //------
 
   const handleEdit = (userId) => {
-    navigate(`/manager/user/${userId}`);
-  };
+    navigate(`/manager/user/${userId}`)
+  }
 
   useEffect(() => {
     getAllUser().then((resp) => {
-      setUsers(resp.data);
-      console.log(resp.data);
-      setLoadingUsers(false);
-    });
-  }, []);
+      setUsers(resp.data)
+      console.log(resp.data)
+      setLoadingUsers(false)
+    })
+  }, [])
 
   return (
     <>
@@ -230,6 +230,7 @@ const Users = () => {
             <th>Email</th>
             <th>Phone</th>
             <th>Roles</th>
+            <th>Accounts & Transfers</th>
           </tr>
         </thead>
         <tbody>
@@ -241,25 +242,33 @@ const Users = () => {
             </tr>
           ) : (
             users.map((user, index) => (
-              <tr
-                key={index}
-                onClick={() => handleEdit(user.id)}
-                className="cursor-hand"
-              >
-                <td>{index + 1}</td>
-                <td>{user.ssn}</td>
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
-                <td>{user.email}</td>
-                <td>{user.mobilePhoneNumber}</td>
-                <td>{user.roles.join(" ")}</td>
+              <tr key={index} className="cursor-hand">
+                <td onClick={() => handleEdit(user.id)}>{index + 1}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.ssn}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.firstName}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.lastName}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.email}</td>
+                <td onClick={() => handleEdit(user.id)}>
+                  {user.mobilePhoneNumber}
+                </td>
+                <td onClick={() => handleEdit(user.id)}>
+                  {user.roles.join(" ")}
+                </td>
+                <td>
+                  <Button as={Link} to={`/account/user/${user.id}/manager`}>
+                    Accounts
+                  </Button>
+                  <Button as={Link} to={`/transfer/user/${user.id}/manager`}>
+                    Transfers
+                  </Button>
+                </td>
               </tr>
             ))
           )}
         </tbody>
       </Table>
     </>
-  );
-};
+  )
+}
 
-export default Users;
+export default Users

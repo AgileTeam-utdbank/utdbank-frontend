@@ -1,30 +1,27 @@
-import moment from "moment";
-import React, { useEffect, useState } from "react";
-import { Table, Spinner, Container, Button } from "react-bootstrap";
-import { FiArrowLeft } from "react-icons/fi";
-import { useNavigate, useParams } from "react-router-dom";
-import { getTransfersByAccountNo } from "../../../api/admin-transfers-service";
+import moment from "moment"
+import React, { useEffect, useState } from "react"
+import { Table, Spinner, Container, Button } from "react-bootstrap"
+import { FiArrowLeft } from "react-icons/fi"
+import { Link } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import { getTransfersByAccountNo } from "../../../api/admin-transfers-service"
 
 const TransfersByAccountNo = () => {
-  const [loading, setLoading] = useState(true);
-  const [transfers, setTransfers] = useState([]);
-  const { accountNo } = useParams();
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true)
+  const [transfers, setTransfers] = useState([])
+  const { accountNo } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     getTransfersByAccountNo(accountNo).then((resp) => {
-      console.log(resp.data);
-      setTransfers(resp.data);
-      setLoading(false);
-    });
-  }, []);
+      console.log(resp.data)
+      setTransfers(resp.data)
+      setLoading(false)
+    })
+  }, [])
   return (
     <Container>
-      <Button
-        variant="secondary"
-        className="mb-3"
-        onClick={() => navigate("/transfer/manager/all")}
-      >
+      <Button variant="secondary" className="mb-3" onClick={() => navigate(-1)}>
         <FiArrowLeft /> Back to transfers
       </Button>
       <Table striped bordered hover responsive>
@@ -38,6 +35,7 @@ const TransfersByAccountNo = () => {
             <th>Currency</th>
             <th>Description</th>
             <th>Transaction Date</th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody>
@@ -49,7 +47,7 @@ const TransfersByAccountNo = () => {
             </tr>
           )}
           {transfers.map((item, index) => (
-            <tr key={index} className="cursor-hand">
+            <tr key={index}>
               <td>{index + 1}</td>
               <td>{item.userId}</td>
               <td>{item.fromAccountId}</td>
@@ -58,12 +56,17 @@ const TransfersByAccountNo = () => {
               <td>{item.currencyCode}</td>
               <td>{item.description}</td>
               <td>{moment(item.transactionDate).format("lll")}</td>
+              <td>
+                <Button as={Link} to={`/transfer/${item.id}/manager`}>
+                  Details
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
       </Table>
     </Container>
-  );
-};
+  )
+}
 
-export default TransfersByAccountNo;
+export default TransfersByAccountNo
