@@ -1,44 +1,44 @@
-import React from "react"
-import { Route, Routes } from "react-router-dom"
-import ForgetPasswordPage from "../pages/ForgetPasswordPage"
-import AuthenticationPage from "../pages/AuthenticationPage"
-import FaqsPage from "../pages/FaqsPage"
-import ServicePage from "../pages/ServicePage"
-import PricingPage from "../pages/PricingPage"
-import HomePage from "../pages/HomePage"
-import AboutUsPage from "../pages/AboutUsPage"
-import ContactPage from "../pages/ContactPage"
-import PrivacyPolicyPage from "../pages/PrivacyPolicyPage"
-import TermsPage from "../pages/TermsPage"
-import PrivateRoute from "./PrivateRoute"
-import ProfilePage from "../pages/user/ProfilePage"
-import TransfersPage from "../pages/user/TransfersPage"
-import TransfersNewPage from "../pages/user/TransfersNewPage"
-import AccountsPage from "../pages/user/AccountsPage"
-import AccountsPageEmployee from "../pages/employee/accounts/AccountsPage"
-import AccountsPageManager from "../pages/manager/accounts/AccountsPage"
-import AccountsNewPage from "../pages/user/AccountsNewPage"
-import TransferDetailsPage from "../pages/user/TransferDetailsPage"
-import AccountEditPage from "../pages/user/AccountEditPage"
-import AccountsEditPageEmployee from "../pages/employee/accounts/AccountsEditPage"
-import AccountsEditPageManager from "../pages/manager/accounts/AccountsEditPage"
-import AccountsByUserIdPage from "../pages/employee/accounts/AccountByUserIdPage"
-import AccountsByUserIdPageManager from "../pages/manager/accounts/AccountByUserIdPage"
-import AccountCreateByUserIdPage from "../pages/employee/accounts/AccountCreateByUserIdPage"
-import AccountCreateByUserIdPageManager from "../pages/manager/accounts/AccountCreateByUserIdPage"
-import ErrorPage from "../pages/ErrorPage"
-import TransferDetailsPageEmployee from "../pages/employee/transfers/TransferDetailsPageEmployee"
-import AllTransfersPageEmployee from "../pages/employee/transfers/AllTransfersPageEmployee"
-import TransfersByUserIdPageEmployee from "../pages/employee/transfers/TransfersByUserIdPageEmployee"
-import TransfersByAccountNoPageEmployee from "../pages/employee/transfers/TransfersByAccountNoPageEmployee"
-import AllTransfersPageManager from "../pages/manager/transfers/AllTransfersPageManager"
-import TransferDetailsPageManager from "../pages/manager/transfers/TransferDetailsPageManager"
-import TransfersByAccountNoPageManager from "../pages/manager/transfers/TransfersByAccountNoPageManager"
-import TransfersByUserIdPageManager from "../pages/manager/transfers/TransfersByUserIdPageManager"
-import UserEditPageManager from "../pages/manager/users/UserEditPageManager"
-import UsersPageManager from "../pages/manager/users/UsersPageManager"
-import UserEditPage from "../pages/employee/users/UserEditPage"
-import UsersPage from "../pages/employee/users/UsersPage"
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import ForgetPasswordPage from "../pages/ForgetPasswordPage";
+import AuthenticationPage from "../pages/AuthenticationPage";
+import FaqsPage from "../pages/FaqsPage";
+import ServicePage from "../pages/ServicePage";
+import PricingPage from "../pages/PricingPage";
+import HomePage from "../pages/HomePage";
+import AboutUsPage from "../pages/AboutUsPage";
+import ContactPage from "../pages/ContactPage";
+import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
+import TermsPage from "../pages/TermsPage";
+import PrivateRoute from "./PrivateRoute";
+import ProfilePage from "../pages/user/ProfilePage";
+import TransfersPage from "../pages/user/TransfersPage";
+import TransfersNewPage from "../pages/user/TransfersNewPage";
+import AccountsPage from "../pages/user/AccountsPage";
+import AccountsPageEmployee from "../pages/employee/accounts/AccountsPage";
+import AccountsPageManager from "../pages/manager/accounts/AccountsPage";
+import AccountsNewPage from "../pages/user/AccountsNewPage";
+import TransferDetailsPage from "../pages/user/TransferDetailsPage";
+import AccountEditPage from "../pages/user/AccountEditPage";
+import AccountsEditPageEmployee from "../pages/employee/accounts/AccountsEditPage";
+import AccountsEditPageManager from "../pages/manager/accounts/AccountsEditPage";
+import AccountsByUserIdPage from "../pages/employee/accounts/AccountByUserIdPage";
+import AccountsByUserIdPageManager from "../pages/manager/accounts/AccountByUserIdPage";
+import AccountCreateByUserIdPage from "../pages/employee/accounts/AccountCreateByUserIdPage";
+import AccountCreateByUserIdPageManager from "../pages/manager/accounts/AccountCreateByUserIdPage";
+import ErrorPage from "../pages/ErrorPage";
+import TransferDetailsPageEmployee from "../pages/employee/transfers/TransferDetailsPageEmployee";
+import AllTransfersPageEmployee from "../pages/employee/transfers/AllTransfersPageEmployee";
+import TransfersByUserIdPageEmployee from "../pages/employee/transfers/TransfersByUserIdPageEmployee";
+import TransfersByAccountNoPageEmployee from "../pages/employee/transfers/TransfersByAccountNoPageEmployee";
+import AllTransfersPageManager from "../pages/manager/transfers/AllTransfersPageManager";
+import TransferDetailsPageManager from "../pages/manager/transfers/TransferDetailsPageManager";
+import TransfersByAccountNoPageManager from "../pages/manager/transfers/TransfersByAccountNoPageManager";
+import TransfersByUserIdPageManager from "../pages/manager/transfers/TransfersByUserIdPageManager";
+import UserEditPageManager from "../pages/manager/users/UserEditPageManager";
+import UsersPageManager from "../pages/manager/users/UsersPageManager";
+import UserEditPage from "../pages/employee/users/UserEditPage";
+import UsersPage from "../pages/employee/users/UsersPage";
 
 const CustomRoutes = () => {
   return (
@@ -48,7 +48,7 @@ const CustomRoutes = () => {
       <Route
         path="/manager/user/:userId"
         element={
-          <PrivateRoute admin={true}>
+          <PrivateRoute manager={true}>
             <UserEditPageManager />
           </PrivateRoute>
         }
@@ -57,7 +57,7 @@ const CustomRoutes = () => {
       <Route
         path="/manager/users"
         element={
-          <PrivateRoute admin={true}>
+          <PrivateRoute manager={true}>
             <UsersPageManager />
           </PrivateRoute>
         }
@@ -133,7 +133,7 @@ const CustomRoutes = () => {
       <Route
         path="/employee/user/:userId"
         element={
-          <PrivateRoute admin={true}>
+          <PrivateRoute employee={true}>
             <UserEditPage />
           </PrivateRoute>
         }
@@ -142,7 +142,7 @@ const CustomRoutes = () => {
       <Route
         path="/employee/users"
         element={
-          <PrivateRoute admin={true}>
+          <PrivateRoute employee={true}>
             <UsersPage />
           </PrivateRoute>
         }
@@ -287,7 +287,7 @@ const CustomRoutes = () => {
       <Route path="/about" element={<AboutUsPage />} />
       <Route path="/" element={<HomePage />} />
     </Routes>
-  )
-}
+  );
+};
 
-export default CustomRoutes
+export default CustomRoutes;
