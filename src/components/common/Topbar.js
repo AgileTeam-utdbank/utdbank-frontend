@@ -38,7 +38,7 @@ const Topbar = () => {
                 <DropdownButton
                   id="dropdown-basic-button"
                   title={`${user.firstName} ${user.lastName} >`}
-                  size="sm"
+                  size="md"
                   align="end"
                 >
                   {isEmployee(user.roles) && (
@@ -46,12 +46,7 @@ const Topbar = () => {
                       <Dropdown.Item as={Link} to="/employee/users">
                         User Management
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/employee/accounts">
-                        Account Management
-                      </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/transfer/employee/all">
-                        Transfer Management
-                      </Dropdown.Item>
+
                       <Dropdown.Divider />
                     </>
                   )}
@@ -60,12 +55,7 @@ const Topbar = () => {
                       <Dropdown.Item as={Link} to="/manager/users">
                         User Management
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/manager/accounts">
-                        Account Management
-                      </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/transfer/manager/all">
-                        Transfer Management
-                      </Dropdown.Item>
+
                       <Dropdown.Divider />
                     </>
                   )}

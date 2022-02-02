@@ -15,8 +15,6 @@ import ProfilePage from "../pages/user/ProfilePage";
 import TransfersPage from "../pages/user/TransfersPage";
 import TransfersNewPage from "../pages/user/TransfersNewPage";
 import AccountsPage from "../pages/user/AccountsPage";
-import AccountsPageEmployee from "../pages/employee/accounts/AccountsPage";
-import AccountsPageManager from "../pages/manager/accounts/AccountsPage";
 import AccountsNewPage from "../pages/user/AccountsNewPage";
 import TransferDetailsPage from "../pages/user/TransferDetailsPage";
 import AccountEditPage from "../pages/user/AccountEditPage";
@@ -28,10 +26,8 @@ import AccountCreateByUserIdPage from "../pages/employee/accounts/AccountCreateB
 import AccountCreateByUserIdPageManager from "../pages/manager/accounts/AccountCreateByUserIdPage";
 import ErrorPage from "../pages/ErrorPage";
 import TransferDetailsPageEmployee from "../pages/employee/transfers/TransferDetailsPageEmployee";
-import AllTransfersPageEmployee from "../pages/employee/transfers/AllTransfersPageEmployee";
 import TransfersByUserIdPageEmployee from "../pages/employee/transfers/TransfersByUserIdPageEmployee";
 import TransfersByAccountNoPageEmployee from "../pages/employee/transfers/TransfersByAccountNoPageEmployee";
-import AllTransfersPageManager from "../pages/manager/transfers/AllTransfersPageManager";
 import TransferDetailsPageManager from "../pages/manager/transfers/TransferDetailsPageManager";
 import TransfersByAccountNoPageManager from "../pages/manager/transfers/TransfersByAccountNoPageManager";
 import TransfersByUserIdPageManager from "../pages/manager/transfers/TransfersByUserIdPageManager";
@@ -87,14 +83,7 @@ const CustomRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route
-        path="/transfer/manager/all"
-        element={
-          <PrivateRoute manager={true}>
-            <AllTransfersPageManager />
-          </PrivateRoute>
-        }
-      />
+
       <Route
         path="account/user/:userId/manager"
         element={
@@ -116,14 +105,6 @@ const CustomRoutes = () => {
         element={
           <PrivateRoute manager={true}>
             <AccountsEditPageManager />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/manager/accounts"
-        element={
-          <PrivateRoute manager={true}>
-            <AccountsPageManager />
           </PrivateRoute>
         }
       />
@@ -172,14 +153,7 @@ const CustomRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route
-        path="/transfer/employee/all"
-        element={
-          <PrivateRoute employee={true}>
-            <AllTransfersPageEmployee />
-          </PrivateRoute>
-        }
-      />
+
       <Route
         path="/account/:accountNo/employee"
         element={
@@ -188,14 +162,7 @@ const CustomRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route
-        path="/employee/accounts"
-        element={
-          <PrivateRoute employee={true}>
-            <AccountsPageEmployee />
-          </PrivateRoute>
-        }
-      />
+
       <Route
         path="account/user/:userId/employee"
         element={
