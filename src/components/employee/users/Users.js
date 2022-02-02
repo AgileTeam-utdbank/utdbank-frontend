@@ -230,7 +230,7 @@ const Users = () => {
             <th>Email</th>
             <th>Phone</th>
             <th>Roles</th>
-            <th>Accounts</th>
+            <th className="text-center">Accounts & Transfers</th>
           </tr>
         </thead>
         <tbody>
@@ -254,7 +254,7 @@ const Users = () => {
                 <td onClick={() => handleEdit(user.id)}>
                   {user.roles.join(" ")}
                 </td>
-                <td>
+                <td className="d-flex justify-content-around">
                   <Button as={Link} to={`/account/user/${user.id}/employee`}>
                     Accounts
                   </Button>

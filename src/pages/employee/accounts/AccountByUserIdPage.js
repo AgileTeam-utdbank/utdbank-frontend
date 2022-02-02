@@ -6,14 +6,16 @@ import PageHeader from "../../../components/common/PageHeader";
 import Spacer from "../../../components/common/Spacer";
 import Topbar from "../../../components/common/Topbar";
 import AccountsByUserId from "../../../components/employee/accounts/AccountsByUserId";
+import { useStore } from "../../../store";
 
 const AccountsByUserIdPage = () => {
   const { userId } = useParams();
+
   return (
     <>
       <Topbar />
       <PageHeader
-        title={`Owner of account number ${userId}`}
+        title={`Accounts of ${userId}`}
         image="accounts-pageheader-background-enginakyurt.jpg"
       />
       <Spacer />

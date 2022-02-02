@@ -24,15 +24,15 @@ const AccountsByUserId = () => {
       <Table striped bordered hover responsive>
         <thead>
           <tr>
-            <th>id</th>
-            <th>Account No</th>
+            <th>Id</th>
+            <th>Account</th>
             <th>Description</th>
             <th>Balance</th>
-            <th>Currency Code</th>
+            <th>Currency</th>
             <th>Account Type</th>
-            <th>Account Status Type</th>
-            <th>Account Created Date</th>
-            <th>Detail</th>
+            <th>Account Status</th>
+            <th>Account Creation Date</th>
+            <th>Details</th>
             <th>Transfers</th>
           </tr>
         </thead>
