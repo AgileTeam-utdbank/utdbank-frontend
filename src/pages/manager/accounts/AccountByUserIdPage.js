@@ -1,14 +1,24 @@
-import React from "react"
-import { Container } from "react-bootstrap"
-import { useParams } from "react-router-dom"
-import Footer from "../../../components/common/Footer"
-import PageHeader from "../../../components/common/PageHeader"
-import Spacer from "../../../components/common/Spacer"
-import Topbar from "../../../components/common/Topbar"
-import AccountsByUserId from "../../../components/manager/accounts/AccountsByUserId"
+import React, { useEffect, useState } from "react";
+import { Card, Container, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { getUserById } from "../../../api/admin-user-service";
+import Footer from "../../../components/common/Footer";
+import PageHeader from "../../../components/common/PageHeader";
+import Spacer from "../../../components/common/Spacer";
+import Topbar from "../../../components/common/Topbar";
+import AccountsByUserId from "../../../components/manager/accounts/AccountsByUserId";
 
 const AccountsByUserIdPage = () => {
-  const { userId } = useParams()
+  const { userId } = useParams();
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    getUserById(userId).then((resp) => {
+      console.log(resp.data);
+      setUser(resp.data);
+    });
+  }, []);
+
   return (
     <>
       <Topbar />
@@ -16,14 +26,26 @@ const AccountsByUserIdPage = () => {
         title={`Owner of account number ${userId}`}
         image="accounts-pageheader-background-enginakyurt.jpg"
       />
-      <Spacer />
+      <Spacer size="50" />
+      {user && (
+        <Container>
+          <Row>
+            <Card>
+              <Card.Body>
+                <h5>SSN: {user.ssn}</h5>
+                Full Name: {user.firstName} {user.lastName}
+              </Card.Body>
+            </Card>
+          </Row>
+        </Container>
+      )}
       <Container className="mt-5">
         <AccountsByUserId userId={userId} />
       </Container>
       <Spacer />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default AccountsByUserIdPage
+export default AccountsByUserIdPage;

@@ -37,7 +37,7 @@ const Topbar = () => {
               {isUserLogin ? (
                 <DropdownButton
                   id="dropdown-basic-button"
-                  title={`${user.firstName} ${user.lastName} >`}
+                  title={`${user.firstName} ${user.lastName}`}
                   size="md"
                   align="end"
                 >

@@ -41,7 +41,7 @@ const AccountsEdit = () => {
       .then((resp) => {
         setLoading(false);
         toast("The account was updated successfully");
-        navigate("/employee/accounts");
+        navigate(-1);
       })
       .catch((err) => {
         toast("An error occured while updating the Account");
