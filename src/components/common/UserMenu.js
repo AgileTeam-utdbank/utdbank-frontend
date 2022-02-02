@@ -69,7 +69,7 @@ const UserMenu = () => {
         ) : (
           <Link
             to="/authentication"
-            className="btn1 blue-gradient btn-with-image text-nowrap"
+            className="btn1 blue-gradient btn-with-image text-nowrap btn-primary"
           >
             <i className="flaticon-login"></i>
             <i className="flaticon-login"></i>
