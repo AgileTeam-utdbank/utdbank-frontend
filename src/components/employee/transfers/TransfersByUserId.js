@@ -54,7 +54,9 @@ const TransfersByUserId = () => {
               <td>{item.transactionAmount} </td>
               <td>{item.currencyCode}</td>
               <td>{item.description}</td>
-              <td>{moment(item.transactionDate).format("lll")}</td>
+              <td>
+                {moment(item.transactionDate).format("MM/DD/YYYY HH:mm:ss")}
+              </td>
               <td>
                 <Button as={Link} to={`/transfer/${item.id}/employee`}>
                   Details

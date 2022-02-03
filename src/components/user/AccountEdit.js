@@ -208,16 +208,15 @@ const AccountEdit = ({}) => {
       </Row>
       <div className="text-end">
         <ButtonGroup aria-label="Basic example">
-          <Button variant="primary" type="submit" disabled={loading}>
-            Update
-          </Button>
           <Button
-            variant="secondary"
-            type="button"
+            className="btn-update"
+            type="submit"
+            disabled={loading}
             onClick={() => navigate("/account")}
           >
-            Cancel
+            Update
           </Button>
+
           <Button
             type="button"
             variant="danger"
@@ -225,6 +224,13 @@ const AccountEdit = ({}) => {
             onClick={handleDelete}
           >
             Delete
+          </Button>
+          <Button
+            variant="secondary"
+            type="button"
+            onClick={() => navigate(-1)}
+          >
+            Cancel
           </Button>
         </ButtonGroup>
       </div>

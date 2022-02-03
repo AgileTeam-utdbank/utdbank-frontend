@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getUserById } from "../../../api/admin-user-service";
 import Footer from "../../../components/common/Footer";
@@ -23,19 +23,24 @@ const AccountsByUserIdPage = () => {
     <>
       <Topbar />
       <PageHeader
-        title={`Owner of account number ${userId}`}
+        title="Accounts by Users"
         image="accounts-pageheader-background-enginakyurt.jpg"
       />
       <Spacer size="50" />
       {user && (
         <Container>
           <Row>
-            <Card>
-              <Card.Body>
-                <h5>SSN: {user.ssn}</h5>
-                Full Name: {user.firstName} {user.lastName}
-              </Card.Body>
-            </Card>
+            <Col sm={4}>
+              <Card>
+                <Card.Body>
+                  <h5>SSN: {user.ssn}</h5>
+                  <h5>
+                    {user.firstName} {user.lastName}
+                  </h5>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col sm={4}></Col>
           </Row>
         </Container>
       )}
