@@ -25,9 +25,16 @@ const Testimonals = () => {
             loop
             margin={10}
             nav={true}
-            dots={true}
             items={1}
-            navText=""
+            dots={false}
+            navText={[
+              '<span class="flaticon-left-arrow"></span>',
+              '<span class="flaticon-right-arrow"></span>',
+            ]}
+            navClass={[
+              "carousel-control-item carousel-control-item-left",
+              "carousel-control-item carousel-control-item-right",
+            ]}
           >
             {/* <!-- TESTIMONAL START --> */}
 

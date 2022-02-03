@@ -31,18 +31,6 @@ const Testimonal = (props) => {
             <h3 className="client-caption-title">{name}</h3>
             <h4 className="client-caption-designation">{jobTitle}</h4>
           </div>
-          <div className="client-carousel-control">
-            <button className="carousel-control-item carousel-control-item-left">
-              <span>
-                <i className="flaticon-right-arrow"></i>
-              </span>
-            </button>
-            <button className="carousel-control-item carousel-control-item-right">
-              <span>
-                <i className="flaticon-left-arrow"></i>
-              </span>
-            </button>
-          </div>
         </div>
       </div>
     </div>
