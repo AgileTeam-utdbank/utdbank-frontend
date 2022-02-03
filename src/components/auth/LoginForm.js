@@ -1,23 +1,23 @@
-import React, { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { useFormik } from "formik"
-import * as Yup from "yup"
-import { Card, Form, Spinner } from "react-bootstrap"
-import { useStore } from "../../store/index"
-import { login, getUser } from "../../api/user-service"
-import { loginFailed, loginSuccess } from "../../store/user/userAction"
-import { toast } from "react-toastify"
-import MaskInput from "react-maskinput/lib"
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Card, Form, Spinner } from "react-bootstrap";
+import { useStore } from "../../store/index";
+import { login, getUser } from "../../api/user-service";
+import { loginFailed, loginSuccess } from "../../store/user/userAction";
+import { toast } from "react-toastify";
+import MaskInput from "react-maskinput/lib";
 
 const LoginForm = () => {
-  const [loading, setLoading] = useState(false)
-  const { dispatchUser } = useStore()
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
+  const { dispatchUser } = useStore();
+  const navigate = useNavigate();
 
   const initialValues = {
     ssn: "163-12-2163",
     password: "emp0",
-  }
+  };
 
   const validationSchema = Yup.object({
     ssn: Yup.string()
@@ -28,40 +28,40 @@ const LoginForm = () => {
         (value) => value && !value.includes("_")
       ),
     password: Yup.string().required("Please enter a password"),
-  })
+  });
 
   const onSubmit = (values) => {
-    console.log(values)
-    setLoading(true)
+    console.log(values);
+    setLoading(true);
 
     login(values)
       .then((respLogin) => {
-        localStorage.setItem("token", respLogin.data.token)
+        localStorage.setItem("token", respLogin.data.token);
 
         getUser()
           .then((respUser) => {
-            console.log(respUser)
-            dispatchUser(loginSuccess(respUser.data))
-            navigate("/")
-            setLoading(false)
+            console.log(respUser);
+            dispatchUser(loginSuccess(respUser.data));
+            navigate("/");
+            setLoading(false);
           })
           .catch((err) => {
-            toast(err.response.data.message)
-            setLoading(false)
-            dispatchUser(loginFailed())
-          })
+            toast(err.response.data.message);
+            setLoading(false);
+            dispatchUser(loginFailed());
+          });
       })
       .catch((err) => {
-        toast(err.response.data.message)
-        setLoading(false)
-      })
-  }
+        toast(err.response.data.message);
+        setLoading(false);
+      });
+  };
 
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit,
-  })
+  });
   return (
     <Card>
       <Card.Body>
@@ -120,7 +120,9 @@ const LoginForm = () => {
                   type="submit"
                   disabled={loading}
                 >
-                  {loading && <Spinner animation="border" variant="light" />}
+                  {loading && (
+                    <Spinner animation="border" variant="light" size="sm" />
+                  )}
                   Login
                 </button>
               </div>
@@ -136,7 +138,7 @@ const LoginForm = () => {
         </div>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;
