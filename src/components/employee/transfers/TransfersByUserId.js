@@ -20,8 +20,12 @@ const TransfersByUserId = () => {
   }, []);
   return (
     <Container>
-      <Button variant="secondary" className="mb-3" onClick={() => navigate(-1)}>
-        <FiArrowLeft /> Back
+      <Button
+        variant="secondary"
+        className="mb-3"
+        onClick={() => navigate("/employee/users")}
+      >
+        <FiArrowLeft /> Back to Users
       </Button>
       <Table striped bordered hover responsive>
         <thead>

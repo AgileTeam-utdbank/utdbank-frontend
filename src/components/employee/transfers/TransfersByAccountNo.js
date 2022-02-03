@@ -22,7 +22,7 @@ const TransfersByAccountNo = () => {
   return (
     <Container>
       <Button variant="secondary" className="mb-3" onClick={() => navigate(-1)}>
-        <FiArrowLeft /> Back
+        <FiArrowLeft /> Previous Page
       </Button>
       <Table striped bordered hover responsive>
         <thead>

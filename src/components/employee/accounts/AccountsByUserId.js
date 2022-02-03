@@ -29,7 +29,11 @@ const AccountsByUserId = () => {
         >
           New Account
         </Button>
-        <Button variant="secondary" type="button" onClick={() => navigate(-1)}>
+        <Button
+          variant="secondary"
+          type="button"
+          onClick={() => navigate("/employee/users")}
+        >
           Back to Users
         </Button>
       </ButtonGroup>

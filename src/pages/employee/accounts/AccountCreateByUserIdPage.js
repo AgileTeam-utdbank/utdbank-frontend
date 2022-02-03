@@ -14,7 +14,7 @@ const AccountCreateByUserIdPage = () => {
     <>
       <Topbar />
       <PageHeader
-        title={`Account Management of User Id : ${userId}`}
+        title="Create Account"
         image="accounts-pageheader-background-enginakyurt.jpg"
       />
       <Spacer />

@@ -31,7 +31,6 @@ const UserMenu = () => {
         {isUserLogin ? (
           <DropdownButton
             id="dropdown-basic-button"
-            className="me-3"
             title={`${user.firstName} ${user.lastName}`}
             size="md"
             align="end"

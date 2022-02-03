@@ -1,28 +1,28 @@
-import moment from "moment"
-import React, { useEffect, useState } from "react"
-import { Table, Spinner, Container, Button } from "react-bootstrap"
-import { FiArrowLeft } from "react-icons/fi"
-import { Link } from "react-router-dom"
-import { useNavigate, useParams } from "react-router-dom"
-import { getTransfersByAccountNo } from "../../../api/admin-transfers-service"
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { Table, Spinner, Container, Button } from "react-bootstrap";
+import { FiArrowLeft } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getTransfersByAccountNo } from "../../../api/admin-transfers-service";
 
 const TransfersByAccountNo = () => {
-  const [loading, setLoading] = useState(true)
-  const [transfers, setTransfers] = useState([])
-  const { accountNo } = useParams()
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(true);
+  const [transfers, setTransfers] = useState([]);
+  const { accountNo } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getTransfersByAccountNo(accountNo).then((resp) => {
-      console.log(resp.data)
-      setTransfers(resp.data)
-      setLoading(false)
-    })
-  }, [])
+      console.log(resp.data);
+      setTransfers(resp.data);
+      setLoading(false);
+    });
+  }, []);
   return (
     <Container>
       <Button variant="secondary" className="mb-3" onClick={() => navigate(-1)}>
-        <FiArrowLeft /> Back to transfers
+        <FiArrowLeft /> Previous Page
       </Button>
       <Table striped bordered hover responsive>
         <thead>
@@ -66,7 +66,7 @@ const TransfersByAccountNo = () => {
         </tbody>
       </Table>
     </Container>
-  )
-}
+  );
+};
 
-export default TransfersByAccountNo
+export default TransfersByAccountNo;

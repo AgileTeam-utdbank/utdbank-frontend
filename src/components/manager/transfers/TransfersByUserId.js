@@ -1,28 +1,32 @@
-import moment from "moment"
-import React, { useEffect, useState } from "react"
-import { Table, Spinner, Container, Button } from "react-bootstrap"
-import { FiArrowLeft } from "react-icons/fi"
-import { Link } from "react-router-dom"
-import { useNavigate, useParams } from "react-router-dom"
-import { getTransfersByUserId } from "../../../api/admin-transfers-service"
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { Table, Spinner, Container, Button } from "react-bootstrap";
+import { FiArrowLeft } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getTransfersByUserId } from "../../../api/admin-transfers-service";
 
 const TransfersByUserId = () => {
-  const [loading, setLoading] = useState(true)
-  const [transfers, setTransfers] = useState([])
-  const { userId } = useParams()
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(true);
+  const [transfers, setTransfers] = useState([]);
+  const { userId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getTransfersByUserId(userId).then((resp) => {
-      console.log(resp.data)
-      setTransfers(resp.data)
-      setLoading(false)
-    })
-  }, [])
+      console.log(resp.data);
+      setTransfers(resp.data);
+      setLoading(false);
+    });
+  }, []);
   return (
     <Container>
-      <Button variant="secondary" className="mb-3" onClick={() => navigate(-1)}>
-        <FiArrowLeft /> Back to transfers
+      <Button
+        variant="secondary"
+        className="mb-3"
+        onClick={() => navigate("/manager/users")}
+      >
+        <FiArrowLeft /> Back to Users
       </Button>
       <Table striped bordered hover responsive>
         <thead>
@@ -66,7 +70,7 @@ const TransfersByUserId = () => {
         </tbody>
       </Table>
     </Container>
-  )
-}
+  );
+};
 
-export default TransfersByUserId
+export default TransfersByUserId;
