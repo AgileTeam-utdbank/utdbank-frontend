@@ -1,6 +1,9 @@
 import React from "react";
 import SectionTitle from "../../common/SectionTitle";
 import Testimonal from "./Testimonal";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 
 const Testimonals = () => {
   return (
@@ -17,7 +20,15 @@ const Testimonals = () => {
         {/* <!-- SECTION TITLE END --> */}
 
         <div className="client-carousel-content">
-          <div className="client-carousel owl-carousel owl-theme">
+          <OwlCarousel
+            className="owl-theme client-carousel"
+            loop
+            margin={10}
+            nav={true}
+            dots={true}
+            items={1}
+            navText=""
+          >
             {/* <!-- TESTIMONAL START --> */}
 
             <Testimonal
@@ -45,7 +56,7 @@ const Testimonals = () => {
             />
 
             {/* <!-- TESTIMONAL END --> */}
-          </div>
+          </OwlCarousel>
         </div>
       </div>
     </section>

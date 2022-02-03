@@ -28,7 +28,7 @@ const TransferDetails = () => {
             className="mb-3"
             onClick={() => navigate(-1)}
           >
-            <FiArrowLeft /> Back to transfers
+            <FiArrowLeft /> Back to Transfers
           </Button>
           <Row>
             <Col>

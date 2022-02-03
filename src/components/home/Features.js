@@ -1,6 +1,9 @@
 import React from "react";
 import SectionTitle from "../common/SectionTitle";
 import SectionTitleItem from "./SectionTitleItem";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 
 const Features = () => {
   return (
@@ -15,7 +18,13 @@ const Features = () => {
         />
 
         <div className="home-feature">
-          <div className="home-feature-carousel owl-carousel owl-theme">
+          <OwlCarousel
+            className="owl-theme home-feature-carousel"
+            loop
+            margin={10}
+            nav={true}
+            dots={false}
+          >
             <SectionTitleItem
               title="Fully Encrypted"
               color="blue"
@@ -77,7 +86,7 @@ const Features = () => {
                     deimod tempor incid-idunt ut dolor sit amet"
               image="shield.png"
             />
-          </div>
+          </OwlCarousel>
         </div>
       </div>
     </section>
