@@ -272,21 +272,13 @@ const UserEdit = () => {
       )}
       <div className="text-end">
         <ButtonGroup aria-label="Basic example">
-          <Button
-            variant="secondary"
-            type="button"
-            variant="secondary"
-            onClick={() => navigate(-1)}
-          >
-            Cancel
-          </Button>
           {!initialValues.buildIn && (
             <>
-              <Button variant="primary" type="submit" disabled={saving}>
+              <Button className="btn-update" type="submit" disabled={saving}>
                 {saving && (
                   <Spinner animation="border" variant="light" size="sm" />
                 )}{" "}
-                Save
+                Update
               </Button>
               <Button
                 type="button"
@@ -301,6 +293,14 @@ const UserEdit = () => {
               </Button>
             </>
           )}
+          <Button
+            variant="secondary"
+            type="button"
+            variant="secondary"
+            onClick={() => navigate(-1)}
+          >
+            Cancel
+          </Button>
         </ButtonGroup>
       </div>
     </Form>

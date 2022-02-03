@@ -2,8 +2,9 @@
   --color1: linear-gradient(90deg, rgb(242, 15, 16) 0%, rgb(236, 96, 13) 100%);
   --color2: rgb(242, 15, 16);
   --color3: rgb(236, 96, 13);
-  --color4: rgb(11, 33, 84);
+  --color4: rgb(16, 53, 138);
   --color1-transparent-15: rgb(236, 95, 13, 0.3);
+  --color4-transparent-15: rgb(16, 53, 138, 0.3);
 }
 
 a {
@@ -33,4 +34,15 @@ ul {
 
 .flaticon-login-mobil {
   color: var(--color3);
+}
+.btn-update {
+  background-image: var(--color4) !important;
+  background-color: var(--color4) !important;
+  border-color: var(--color4) !important;
+}
+.btn-update:focus {
+  background-image: var(--color4) !important;
+  background-color: var(--color4) !important;
+  border-color: var(--color4) !important;
+  box-shadow: 0 0 0 0.25rem var(--color4-transparent-15) !important;
 }

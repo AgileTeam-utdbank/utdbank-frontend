@@ -1,8 +1,8 @@
-import React, { useState } from "react"
-import * as Yup from "yup"
-import { toast } from "react-toastify"
-import { useFormik } from "formik"
-import MaskInput from "react-maskinput"
+import React, { useState } from "react";
+import * as Yup from "yup";
+import { toast } from "react-toastify";
+import { useFormik } from "formik";
+import MaskInput from "react-maskinput";
 import {
   Form,
   Button,
@@ -12,46 +12,48 @@ import {
   ButtonGroup,
   Card,
   FormCheck,
-} from "react-bootstrap"
-import { createAccount } from "../../api/accounts-service"
-import { useNavigate } from "react-router-dom"
+} from "react-bootstrap";
+import { createAccount } from "../../api/accounts-service";
+import { useNavigate } from "react-router-dom";
 const AccountNew = () => {
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const initialValues = {
     description: "",
     balance: "",
     currencyCode: "",
     accountType: "",
     accountStatusType: "",
-  }
+  };
   const validationSchema = Yup.object({
     description: Yup.string().required("Please enter a account description"),
-    balance: Yup.string().required(""),
+    balance: Yup.string().required("Please enter an amount"),
     currencyCode: Yup.string().required("Please enter currency code"),
     accountType: Yup.string().required("Please enter account type"),
-    accountStatusType: Yup.string().required(""),
-  })
+    accountStatusType: Yup.string().required(
+      "Please choose account status type"
+    ),
+  });
   const onSubmit = (values) => {
-    setLoading(true)
+    setLoading(true);
     createAccount(values)
       .then((resp) => {
-        setLoading(false)
-        toast("Account has been created successfully")
-        navigate("/account")
+        setLoading(false);
+        toast("Account has been created successfully");
+        navigate("/account");
       })
       .catch((err) => {
-        toast("An error occured")
-        console.log(err.response.data.message)
-        setLoading(false)
-      })
-  }
+        toast("An error occured");
+        console.log(err.response.data.message);
+        setLoading(false);
+      });
+  };
   const formik = useFormik({
     enableReinitialize: true,
     initialValues,
     validationSchema,
     onSubmit,
-  })
+  });
   return (
     <Form noValidate onSubmit={formik.handleSubmit}>
       <Card>
@@ -158,6 +160,6 @@ const AccountNew = () => {
         </Card.Body>
       </Card>
     </Form>
-  )
-}
-export default AccountNew
+  );
+};
+export default AccountNew;

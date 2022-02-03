@@ -21,18 +21,30 @@ const AccountsByUserId = () => {
 
   return (
     <>
+      <ButtonGroup aria-label="Basic example" className="mb-3">
+        <Button
+          onClick={() => navigate(`/account/${userId}/create/manager`)}
+          variant="primary"
+          disabled={loading}
+        >
+          New Account
+        </Button>
+        <Button variant="secondary" type="button" onClick={() => navigate(-1)}>
+          Back to Users
+        </Button>
+      </ButtonGroup>
       <Table striped bordered hover responsive>
         <thead>
           <tr>
-            <th>id</th>
-            <th>Account No</th>
+            <th>Id</th>
+            <th>Account</th>
             <th>Description</th>
             <th>Balance</th>
-            <th>Currency Code</th>
+            <th>Currency</th>
             <th>Account Type</th>
-            <th>Account Status Type</th>
-            <th>Account Created Date</th>
-            <th>Detail</th>
+            <th>Account Status</th>
+            <th>Account Creation Date</th>
+            <th>Details</th>
             <th>Transfers</th>
           </tr>
         </thead>
@@ -104,18 +116,6 @@ const AccountsByUserId = () => {
           ))}
         </tbody>
       </Table>
-      <ButtonGroup aria-label="Basic example">
-        <Button
-          onClick={() => navigate(`/account/${userId}/create/manager`)}
-          variant="primary"
-          disabled={loading}
-        >
-          New Account
-        </Button>
-        <Button variant="secondary" type="button" onClick={() => navigate(-1)}>
-          Back to Users
-        </Button>
-      </ButtonGroup>
     </>
   );
 };

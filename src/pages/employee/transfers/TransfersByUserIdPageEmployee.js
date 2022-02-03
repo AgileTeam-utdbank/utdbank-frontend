@@ -5,7 +5,7 @@ import PageHeader from "../../../components/common/PageHeader";
 import Spacer from "../../../components/common/Spacer";
 import Topbar from "../../../components/common/Topbar";
 import { useParams } from "react-router-dom";
-import { Card, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import { getUserById } from "../../../api/admin-user-service";
 
 const TransfersByUserIdPageEmployee = () => {
@@ -27,12 +27,17 @@ const TransfersByUserIdPageEmployee = () => {
       {user && (
         <Container>
           <Row>
-            <Card>
-              <Card.Body>
-                <h5>SSN: {user.ssn}</h5>
-                Full Name: {user.firstName} {user.lastName}
-              </Card.Body>
-            </Card>
+            <Col sm={4}>
+              <Card>
+                <Card.Body>
+                  <h5>SSN: {user.ssn}</h5>
+                  <h5>
+                    {user.firstName} {user.lastName}
+                  </h5>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col sm={4}></Col>
           </Row>
         </Container>
       )}

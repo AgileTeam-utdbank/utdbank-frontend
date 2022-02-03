@@ -30,8 +30,13 @@ function App() {
     loadData();
   }, []);
 
-  if (loading) return <LoadingPage />;
-  else
+  if (loading) {
+    return (
+      <div>
+        <LoadingPage />
+      </div>
+    );
+  } else
     return (
       <div className="App">
         <BrowserRouter>

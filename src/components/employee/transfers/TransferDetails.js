@@ -65,7 +65,9 @@ const TransferDetails = () => {
                         <tr>
                           <td>Transaction Date</td>
                           <td>
-                            {moment(transfers.transactionDate).format("lll")}
+                            {moment(transfers.transactionDate).format(
+                              "MM/DD/YYYY HH:mm:ss"
+                            )}
                           </td>
                         </tr>
                       </tbody>

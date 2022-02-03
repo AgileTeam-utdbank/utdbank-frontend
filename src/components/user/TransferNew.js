@@ -1,54 +1,54 @@
-import React, { useState } from "react"
-import * as Yup from "yup"
-import { toast } from "react-toastify"
-import { useFormik } from "formik"
-import { Form, Button, Row, Col, ButtonGroup, Card } from "react-bootstrap"
-import { createTransfer } from "../../api/transfers-service"
-import { useNavigate } from "react-router-dom"
+import React, { useState } from "react";
+import * as Yup from "yup";
+import { toast } from "react-toastify";
+import { useFormik } from "formik";
+import { Form, Button, Row, Col, ButtonGroup, Card } from "react-bootstrap";
+import { createTransfer } from "../../api/transfers-service";
+import { useNavigate } from "react-router-dom";
 const TransferNew = () => {
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const initialValues = {
     fromAccountId: "",
     toAccountId: "",
     transactionAmount: "",
     currencyCode: "",
     description: "",
-  }
+  };
   const validationSchema = Yup.object({
     fromAccountId: Yup.string().required("Please enter from account id"),
     toAccountId: Yup.string().required("Please enter to account id"),
     transactionAmount: Yup.string().required("Please enter amount"),
     currencyCode: Yup.string().required("Please enter currency code"),
     description: Yup.string().required("Please enter a description"),
-  })
+  });
   const onSubmit = (values) => {
-    setLoading(true)
+    setLoading(true);
     createTransfer(values)
       .then((resp) => {
-        setLoading(false)
-        toast("Transfer has been created successfully")
-        navigate("/transfer")
+        setLoading(false);
+        toast("Transfer has been created successfully");
+        navigate("/transfer");
       })
       .catch((err) => {
-        toast(err.response.data.message)
-        console.log(err.response.data.message)
-        setLoading(false)
-      })
-  }
+        toast(err.response.data.message);
+        console.log(err.response.data.message);
+        setLoading(false);
+      });
+  };
   const formik = useFormik({
     enableReinitialize: true,
     initialValues,
     validationSchema,
     onSubmit,
-  })
+  });
   return (
     <Form noValidate onSubmit={formik.handleSubmit}>
       <Card>
         <Card.Body>
           <Row>
             <Form.Group as={Col} md={4} lg={3} className="mb-3">
-              <Form.Label>From Account Id</Form.Label>
+              <Form.Label>Account (From)</Form.Label>
               <Form.Control
                 className="p-2"
                 style={{ border: "0.25px solid" }}
@@ -62,7 +62,7 @@ const TransferNew = () => {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md={4} lg={3} className="mb-3">
-              <Form.Label>To Account Id</Form.Label>
+              <Form.Label>Account (To)</Form.Label>
               <Form.Control
                 className="p-2"
                 style={{ border: "0.25px solid" }}
@@ -90,7 +90,7 @@ const TransferNew = () => {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md={4} lg={3} className="mb-3">
-              <Form.Label>Currency Code</Form.Label>
+              <Form.Label>Currency</Form.Label>
               <Form.Select
                 className="p-2"
                 style={{ border: "0.25px solid" }}
@@ -140,6 +140,6 @@ const TransferNew = () => {
         </Card.Body>
       </Card>
     </Form>
-  )
-}
-export default TransferNew
+  );
+};
+export default TransferNew;

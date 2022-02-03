@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react"
-import { Table, Spinner, Button, ButtonGroup } from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom"
-import { getTransfers } from "../../api/transfers-service"
+import React, { useEffect, useState } from "react";
+import { Table, Spinner, Button, ButtonGroup } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { getTransfers } from "../../api/transfers-service";
 const Transfers = () => {
-  const [loading, setLoading] = useState(true)
-  const [transfers, setTransfers] = useState([])
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(true);
+  const [transfers, setTransfers] = useState([]);
+  const navigate = useNavigate();
   const showDetails = (id) => {
-    navigate(`/transfer/${id}`)
-  }
+    navigate(`/transfer/${id}`);
+  };
   useEffect(() => {
     getTransfers().then((resp) => {
-      console.log(resp.data)
-      setTransfers(resp.data)
-      setLoading(false)
-    })
-  }, [])
+      console.log(resp.data);
+      setTransfers(resp.data);
+      setLoading(false);
+    });
+  }, []);
   return (
     <>
       <ButtonGroup aria-label="Basic example" className="p-3 ">
@@ -27,10 +27,10 @@ const Transfers = () => {
         <thead>
           <tr>
             <th>#</th>
-            <th>From account id</th>
-            <th>To account id</th>
+            <th>Account (From)</th>
+            <th>Account (To)</th>
             <th>Transaction Amount</th>
-            <th>Currency Code</th>
+            <th>Currency</th>
             <th>Description</th>
           </tr>
         </thead>
@@ -59,6 +59,6 @@ const Transfers = () => {
         </tbody>
       </Table>
     </>
-  )
-}
-export default Transfers
+  );
+};
+export default Transfers;
