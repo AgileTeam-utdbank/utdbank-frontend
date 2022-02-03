@@ -1,8 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import UserMenu from "./UserMenu";
 
 const Menu = () => {
+  const location = useLocation();
+  console.log(location.pathname);
+
   return (
     //  <!-- MENU START-->
     <div className="main-nav">
@@ -18,30 +21,63 @@ const Menu = () => {
           >
             <ul className="navbar-nav mx-auto">
               <li className="nav-item">
-                <Link to="/" className="nav-link active">
+                <Link
+                  to="/"
+                  className={
+                    location.pathname === "/" ? "nav-link active" : "nav-link"
+                  }
+                >
                   Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/about" className="nav-link">
+                <Link
+                  to="/about"
+                  className={
+                    location.pathname === "/about"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
                   About Us
                 </Link>
               </li>
 
               <li className="nav-item">
-                <Link to="/service" className="nav-link">
+                <Link
+                  to="/service"
+                  className={
+                    location.pathname === "/service"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
                   Services
                 </Link>
               </li>
 
               <li className="nav-item">
-                <Link to="/pricing" className="nav-link">
+                <Link
+                  to="/pricing"
+                  className={
+                    location.pathname === "/pricing"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
                   Pricing
                 </Link>
               </li>
 
               <li className="nav-item">
-                <Link to="/contact" className="nav-link">
+                <Link
+                  to="/contact"
+                  className={
+                    location.pathname === "/contact"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                >
                   Contact Us
                 </Link>
               </li>

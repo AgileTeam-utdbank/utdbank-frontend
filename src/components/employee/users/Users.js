@@ -15,7 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getAllUser, searchUsers } from "../../../api/admin-user-service";
 
 const Users = () => {
-  const [loadingUsers, setLoadingUsers] = useState(true);
+  const [loadingUsers, setLoadingUsers] = useState(false);
   const [users, setUsers] = useState([]);
   //Search processs
   const [searchTerm, setSearchTerm] = useState("");
@@ -82,11 +82,11 @@ const Users = () => {
   };
 
   useEffect(() => {
-    getAllUser().then((resp) => {
+    /* getAllUser().then((resp) => {
       setUsers(resp.data);
       console.log(resp.data);
       setLoadingUsers(false);
-    });
+    }); */
   }, []);
 
   return (
