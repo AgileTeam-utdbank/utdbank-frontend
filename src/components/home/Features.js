@@ -24,6 +24,10 @@ const Features = () => {
             margin={10}
             nav={true}
             dots={false}
+            navText={[
+              '<span class="flaticon-left-arrow"></span>',
+              '<span class="flaticon-right-arrow"></span>',
+            ]}
           >
             <SectionTitleItem
               title="Fully Encrypted"
@@ -32,7 +36,6 @@ const Features = () => {
                     deimod tempor incid-idunt ut dolor sit amet"
               image="file.png"
             />
-
             <SectionTitleItem
               title="Transparent Pricing"
               color="orange"
@@ -54,7 +57,6 @@ const Features = () => {
                     deimod tempor incid-idunt ut dolor sit amet"
               image="shield.png"
             />
-
             <SectionTitleItem
               title="Fully Encrypted"
               color="blue"
@@ -62,7 +64,6 @@ const Features = () => {
                     deimod tempor incid-idunt ut dolor sit amet"
               image="file.png"
             />
-
             <SectionTitleItem
               title="Transparent Pricing"
               color="orange"
@@ -70,7 +71,6 @@ const Features = () => {
                     deimod tempor incid-idunt ut dolor sit amet"
               image="hand.png"
             />
-
             <SectionTitleItem
               title="Safe and Secure"
               color="green"
@@ -78,7 +78,6 @@ const Features = () => {
                     deimod tempor incid-idunt ut dolor sit amet"
               image="megaphone.png"
             />
-
             <SectionTitleItem
               title="Instant cashout"
               color="orange"
