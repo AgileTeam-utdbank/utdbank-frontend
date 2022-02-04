@@ -23,6 +23,12 @@ ul {
   justify-content: center;
 }
 
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn-primary {
   background-image: var(--color1) !important;
   border-color: var(--color2) !important;
@@ -108,4 +114,16 @@ ul {
   left: 45%;
   -webkit-animation: carousel-right 3s infinite alternate linear;
   animation: carousel-right 3s infinite alternate linear;
+}
+
+.search-any {
+  background-color: #f1f1f1;
+  color: rgb(0, 0, 0);
+}
+.search-any {
+  border-radius: 20px;
+}
+.search-any h3 span {
+  display: inline-block;
+  border-bottom: 3px rgb(0, 0, 0) solid;
 }

@@ -13,9 +13,12 @@ import {
 import MaskInput from "react-maskinput/lib";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllUser, searchUsers } from "../../../api/admin-user-service";
+import { BiTransfer } from "react-icons/bi";
+import { RiBankLine } from "react-icons/ri";
 
 const Users = () => {
-  const [loadingUsers, setLoadingUsers] = useState(false);
+  const [loadingUsers, setLoadingUsers] = useState(true);
+  const [firstScreen, setfirstScreen] = useState(true);
   const [users, setUsers] = useState([]);
   //Search processs
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,6 +29,8 @@ const Users = () => {
   const navigate = useNavigate();
 
   const handleOnSubmit = (e) => {
+    setfirstScreen(false);
+    setLoadingUsers(true);
     e.preventDefault();
     console.log("handle submit ici: ");
 
@@ -41,6 +46,7 @@ const Users = () => {
 
     searchUsers(searchSSN, searchFirstName, searchLastName, searchEmail)
       .then((resp) => {
+        setLoadingUsers(false);
         console.log(resp.data);
         setUsers(resp.data);
         setSearchSSN("");
@@ -220,53 +226,166 @@ const Users = () => {
         </Card>
       </div>
 
-      <Table striped bordered hover responsive className="admin-list mt-3">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>SSN</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Roles</th>
-            <th className="text-center">Accounts & Transfers</th>
-          </tr>
-        </thead>
-        <tbody>
-          {loadingUsers ? (
-            <tr>
-              <td colSpan={5}>
-                <Spinner animation="border" size="sm" /> Users are loading...
-              </td>
-            </tr>
-          ) : (
-            users.map((user, index) => (
-              <tr key={index} className="cursor-hand">
-                <td onClick={() => handleEdit(user.id)}>{index + 1}</td>
-                <td onClick={() => handleEdit(user.id)}>{user.ssn}</td>
-                <td onClick={() => handleEdit(user.id)}>{user.firstName}</td>
-                <td onClick={() => handleEdit(user.id)}>{user.lastName}</td>
-                <td onClick={() => handleEdit(user.id)}>{user.email}</td>
-                <td onClick={() => handleEdit(user.id)}>
-                  {user.mobilePhoneNumber}
-                </td>
-                <td onClick={() => handleEdit(user.id)}>
-                  {user.roles.join(" ")}
-                </td>
-                <td className="d-flex justify-content-around">
-                  <Button as={Link} to={`/account/user/${user.id}/employee`}>
-                    Accounts
-                  </Button>
-                  <Button as={Link} to={`/transfer/user/${user.id}/employee`}>
-                    Transfers
-                  </Button>
-                </td>
+      {firstScreen ? (
+        <Card className="mt-3 search-any">
+          <Container>
+            <Row className="text-center p-3">
+              <h3>
+                <span>Please search anything for users!</span>
+              </h3>
+            </Row>
+          </Container>
+        </Card>
+      ) : (
+        <>
+          <Table
+            striped
+            bordered
+            hover
+            responsive
+            className="admin-list mt-3  d-lg-none"
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>SSN</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+
+                <th className="text-center">Accounts & Transfers</th>
               </tr>
-            ))
-          )}
-        </tbody>
-      </Table>
+            </thead>
+            <tbody>
+              {loadingUsers ? (
+                <tr>
+                  <td colSpan={5}>
+                    <Spinner animation="border" size="sm" /> Users are
+                    loading...
+                  </td>
+                </tr>
+              ) : (
+                <>
+                  {users.length > 0 ? (
+                    users.map((user, index) => (
+                      <tr key={index} className="cursor-hand">
+                        <td onClick={() => handleEdit(user.id)}>{index + 1}</td>
+                        <td onClick={() => handleEdit(user.id)}>{user.ssn}</td>
+                        <td onClick={() => handleEdit(user.id)}>
+                          {user.firstName}
+                        </td>
+                        <td onClick={() => handleEdit(user.id)}>
+                          {user.lastName}
+                        </td>
+                        <td className="d-flex justify-content-around">
+                          <Button
+                            as={Link}
+                            to={`/account/user/${user.id}/employee`}
+                          >
+                            <RiBankLine /> &nbsp; <span>Accounts</span>
+                          </Button>
+                          <Button
+                            as={Link}
+                            to={`/transfer/user/${user.id}/employee`}
+                          >
+                            <BiTransfer /> &nbsp; <span>Transfers</span>
+                          </Button>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan={5}>
+                        <h6>
+                          No person found according to your search criteria.
+                        </h6>
+                      </td>
+                    </tr>
+                  )}
+                </>
+              )}
+            </tbody>
+          </Table>
+
+          <Table
+            striped
+            bordered
+            hover
+            responsive
+            className="admin-list mt-3 d-none d-lg-table"
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>SSN</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Roles</th>
+                <th className="text-center">Accounts & Transfers</th>
+              </tr>
+            </thead>
+            <tbody>
+              {loadingUsers ? (
+                <tr>
+                  <td colSpan={5}>
+                    <Spinner animation="border" size="sm" /> Users are
+                    loading...
+                  </td>
+                </tr>
+              ) : (
+                <>
+                  {users.length > 0 ? (
+                    users.map((user, index) => (
+                      <tr key={index} className="cursor-hand">
+                        <td onClick={() => handleEdit(user.id)}>{index + 1}</td>
+                        <td onClick={() => handleEdit(user.id)}>{user.ssn}</td>
+                        <td onClick={() => handleEdit(user.id)}>
+                          {user.firstName}
+                        </td>
+                        <td onClick={() => handleEdit(user.id)}>
+                          {user.lastName}
+                        </td>
+                        <td onClick={() => handleEdit(user.id)}>
+                          {user.email}
+                        </td>
+                        <td onClick={() => handleEdit(user.id)}>
+                          {user.mobilePhoneNumber}
+                        </td>
+                        <td onClick={() => handleEdit(user.id)}>
+                          {user.roles.join(" ")}
+                        </td>
+                        <td className="d-flex justify-content-around">
+                          <Button
+                            as={Link}
+                            to={`/account/user/${user.id}/employee`}
+                          >
+                            <RiBankLine /> &nbsp; <span>Accounts</span>
+                          </Button>
+                          <Button
+                            as={Link}
+                            to={`/transfer/user/${user.id}/employee`}
+                          >
+                            <BiTransfer /> &nbsp; <span>Accounts</span>
+                          </Button>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan={8}>
+                        <h6>
+                          No person found according to your search criteria.
+                        </h6>
+                      </td>
+                    </tr>
+                  )}
+                </>
+              )}
+            </tbody>
+          </Table>
+        </>
+      )}
     </>
   );
 };
