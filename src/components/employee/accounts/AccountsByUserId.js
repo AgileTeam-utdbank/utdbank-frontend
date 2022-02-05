@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 
 import { getAccountByUserId } from "../../../api/admin-service";
+import { BiDetail, BiTransfer } from "react-icons/bi";
 
 const AccountsByUserId = () => {
   const [accounts, setAccounts] = useState([]);
@@ -37,7 +38,143 @@ const AccountsByUserId = () => {
           Back to Users
         </Button>
       </ButtonGroup>
-      <Table striped bordered hover responsive>
+
+      <Table striped bordered hover responsive className="mt-3  d-md-none">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Account</th>
+            <th>Balance</th>
+            <th>Currency</th>
+            <th>Details</th>
+            <th>Transfers</th>
+          </tr>
+        </thead>
+        <tbody>
+          {loading && (
+            <tr>
+              <td colSpan={6}>Loading...</td>
+            </tr>
+          )}
+          {accounts.map((item, index) => (
+            <tr key={index}>
+              <td>{item.id}</td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.accountNo}
+              </td>
+
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.balance}
+              </td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.currencyCode}
+              </td>
+
+              <td>
+                <Button as={Link} to={`/account/${item.accountNo}/employee`}>
+                  <BiDetail />
+                </Button>
+              </td>
+              <td>
+                <Button
+                  as={Link}
+                  to={`/transfer/${item.accountNo}/accountNo/employee`}
+                >
+                  <BiTransfer />
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+
+      <Table
+        striped
+        bordered
+        hover
+        responsive
+        className="mt-3 d-none d-md-table d-xl-none"
+      >
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Account</th>
+            <th>Balance</th>
+            <th>Currency</th>
+            <th>Account Type</th>
+            <th>Details</th>
+            <th>Transfers</th>
+          </tr>
+        </thead>
+        <tbody>
+          {loading && (
+            <tr>
+              <td colSpan={6}>Loading...</td>
+            </tr>
+          )}
+          {accounts.map((item, index) => (
+            <tr key={index}>
+              <td>{item.id}</td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.accountNo}
+              </td>
+
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.balance}
+              </td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.currencyCode}
+              </td>
+              <td
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/account/${item.accountNo}/employee`)}
+              >
+                {item.accountType}
+              </td>
+
+              <td>
+                <Button as={Link} to={`/account/${item.accountNo}/employee`}>
+                  <BiDetail /> &nbsp; <span>Details</span>
+                </Button>
+              </td>
+              <td>
+                <Button
+                  as={Link}
+                  to={`/transfer/${item.accountNo}/accountNo/employee`}
+                >
+                  <BiTransfer /> &nbsp; <span>Transfers</span>
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+
+      <Table
+        striped
+        bordered
+        hover
+        responsive
+        className="mt-3 d-none d-xl-table"
+      >
         <thead>
           <tr>
             <th>Id</th>
@@ -105,7 +242,7 @@ const AccountsByUserId = () => {
               </td>
               <td>
                 <Button as={Link} to={`/account/${item.accountNo}/employee`}>
-                  Details
+                  <BiDetail /> &nbsp; <span>Details</span>
                 </Button>
               </td>
               <td>
@@ -113,7 +250,7 @@ const AccountsByUserId = () => {
                   as={Link}
                   to={`/transfer/${item.accountNo}/accountNo/employee`}
                 >
-                  Transfers
+                  <BiTransfer /> &nbsp; <span>Transfers</span>
                 </Button>
               </td>
             </tr>

@@ -59,20 +59,7 @@ const Topbar = () => {
                       <Dropdown.Divider />
                     </>
                   )}
-                  {/* {isAdmin(user.roles) && (
-      <>
-        <Dropdown.Item as={Link} to="/admin/users">
-          User Management
-        </Dropdown.Item>
-        <Dropdown.Item as={Link} to="/admin/vehicles">
-          Vehicle Management
-        </Dropdown.Item>
-        <Dropdown.Item as={Link} to="/admin/reservations">
-          Reservation Management
-        </Dropdown.Item>
-        <Dropdown.Divider />
-      </>
-    )} */}
+
                   <Dropdown.Item as={Link} to="/profile">
                     My Profile
                   </Dropdown.Item>
@@ -91,13 +78,6 @@ const Topbar = () => {
               )}
             </div>
           </div>
-          {/* <div className="navbar-option">
-            <div className="navbar-option-item">
-              <Link to="/authentication">
-                <i className="flaticon-login"></i>
-              </Link>
-            </div>
-          </div> */}
         </div>
         {/* <!-- MENU START--> */}
         <Menu />
