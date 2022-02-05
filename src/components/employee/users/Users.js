@@ -82,11 +82,11 @@ const Users = () => {
   };
 
   useEffect(() => {
-    /* getAllUser().then((resp) => {
+    getAllUser().then((resp) => {
       setUsers(resp.data);
       console.log(resp.data);
       setLoadingUsers(false);
-    }); */
+    });
   }, []);
 
   return (
