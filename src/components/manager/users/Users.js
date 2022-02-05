@@ -231,7 +231,7 @@ const Users = () => {
           <Container>
             <Row className="text-center p-3">
               <h3>
-                <span>Please search anything for users!</span>
+                <span>Please type something to search for users!</span>
               </h3>
             </Row>
           </Container>
@@ -251,8 +251,8 @@ const Users = () => {
                 <th>SSN</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-
-                <th className="text-center">Accounts & Transfers</th>
+                <th className="text-center">Accounts</th>
+                <th className="text-center">Transfers</th>
               </tr>
             </thead>
             <tbody>
@@ -276,18 +276,20 @@ const Users = () => {
                         <td onClick={() => handleEdit(user.id)}>
                           {user.lastName}
                         </td>
-                        <td className="d-flex justify-content-around">
+                        <td>
                           <Button
                             as={Link}
                             to={`/account/user/${user.id}/manager`}
                           >
-                            <RiBankLine /> &nbsp; <span>Accounts</span>
+                            <RiBankLine />
                           </Button>
+                        </td>
+                        <td>
                           <Button
                             as={Link}
                             to={`/transfer/user/${user.id}/manager`}
                           >
-                            <BiTransfer /> &nbsp; <span>Transfers</span>
+                            <BiTransfer />
                           </Button>
                         </td>
                       </tr>
@@ -322,7 +324,8 @@ const Users = () => {
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Roles</th>
-                <th className="text-center">Accounts & Transfers</th>
+                <th className="text-center">Accounts</th>
+                <th className="text-center">Transfers</th>
               </tr>
             </thead>
             <tbody>
@@ -355,18 +358,20 @@ const Users = () => {
                         <td onClick={() => handleEdit(user.id)}>
                           {user.roles.join(" ")}
                         </td>
-                        <td className="d-flex justify-content-around">
+                        <td>
                           <Button
                             as={Link}
                             to={`/account/user/${user.id}/manager`}
                           >
                             <RiBankLine /> &nbsp; <span>Accounts</span>
                           </Button>
+                        </td>
+                        <td>
                           <Button
                             as={Link}
                             to={`/transfer/user/${user.id}/manager`}
                           >
-                            <BiTransfer /> &nbsp; <span>Accounts</span>
+                            <BiTransfer /> &nbsp; <span>Transfers</span>
                           </Button>
                         </td>
                       </tr>
