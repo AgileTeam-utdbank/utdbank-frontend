@@ -78,11 +78,11 @@ const Footer = () => {
                 </div>
                 <ul className="footer-details footer-list">
                   <li>
-                    Address:
+                    Address:&nbsp;
                     <span>456 Labisto Parkways, CA, United States</span>
                   </li>
                   <li>
-                    Message:
+                    Message:&nbsp;
                     <span>
                       <Link
                         to="/cdn-cgi/l/email-protection#96fff8f0f9d6f7fafff7b8f5f9fb"
@@ -98,7 +98,7 @@ const Footer = () => {
                     </span>
                   </li>
                   <li>
-                    Phone:
+                    Phone:&nbsp;
                     <span>
                       <Link to="tel:(+00)67834598" target="_blank">
                         (+00) 678 345 98
@@ -106,7 +106,7 @@ const Footer = () => {
                     </span>
                   </li>
                   <li>
-                    Fax: <span>+(456) 332-897-234</span>
+                    Fax:&nbsp;<span>+(456) 332-897-234</span>
                   </li>
                 </ul>
               </div>
@@ -116,9 +116,9 @@ const Footer = () => {
         <div className="footer-lower">
           <div className="footer-lower-item footer-copyright-text">
             <p>
-              Copyright ©2021 Design & Developed by
+              Copyright ©2022 Design & Developed by
               <Link to="https://techproeducation.com" target="_blank">
-                Techpro Education
+                &nbsp;Techpro Education
               </Link>
             </p>
           </div>

@@ -10,7 +10,7 @@ const ForgetPassword = () => {
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().required("Please enter User Name Or Email Address"),
+    email: Yup.string().required("Please enter a valid email address"),
   });
 
   const onSubmit = (values) => {
@@ -42,23 +42,23 @@ const ForgetPassword = () => {
               <div className="authentication-form">
                 <Form noValidate onSubmit={formik.handleSubmit}>
                   <div className="row">
-                    <div className="col-sm-12 col-md-12 col-lg-12">
-                      <div className="input-area mb-15">
+                    <div className="col-sm-12 col-md-12 col-lg-12 ">
+                      <div className="input-area mb-15 pb-4">
                         <label className="input-label-icon">
                           <span>
                             <i className="flaticon-user"></i>
                           </span>
                         </label>
                         <Form.Control
-                          style={{ width: "auto" }}
                           type="email"
-                          className="input-full"
-                          placeholder="Please enter your email!"
+                          className="input-full w-100"
+                          placeholder="Please enter your email address"
                           {...formik.getFieldProps("email")}
                           isInvalid={!!formik.errors.email}
                         />
+
                         <Form.Control.Feedback type="invalid">
-                          {formik.errors.email}
+                          &nbsp; &nbsp; {formik.errors.email}
                         </Form.Control.Feedback>
                       </div>
                     </div>

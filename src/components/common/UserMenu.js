@@ -26,57 +26,58 @@ const UserMenu = () => {
     );
   };
   return (
-    <div className="navbar-option">
-      <div className="navbar-option-item">
-        {isUserLogin ? (
-          <DropdownButton
-            id="dropdown-basic-button"
-            title={`${user.firstName} ${user.lastName}`}
-            size="md"
-            align="end"
-          >
-            {isEmployee(user.roles) && (
-              <>
-                <Dropdown.Item as={Link} to="/employee/users">
-                  User Management
-                </Dropdown.Item>
+    <>
+      <div className="navbar-option d-none d-lg-block">
+        <div className="navbar-option-item">
+          {isUserLogin ? (
+            <DropdownButton
+              id="dropdown-basic-button"
+              title={`${user.firstName} ${user.lastName}`}
+              size="md"
+              align="end"
+            >
+              {isEmployee(user.roles) && (
+                <>
+                  <Dropdown.Item as={Link} to="/employee/users">
+                    User Management
+                  </Dropdown.Item>
 
-                <Dropdown.Divider />
-              </>
-            )}
-            {isManager(user.roles) && (
-              <>
-                <Dropdown.Item as={Link} to="/manager/users">
-                  User Management
-                </Dropdown.Item>
+                  <Dropdown.Divider />
+                </>
+              )}
+              {isManager(user.roles) && (
+                <>
+                  <Dropdown.Item as={Link} to="/manager/users">
+                    User Management
+                  </Dropdown.Item>
 
-                <Dropdown.Divider />
-              </>
-            )}
+                  <Dropdown.Divider />
+                </>
+              )}
 
-            <Dropdown.Item as={Link} to="/profile">
-              My Profile
-            </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/transfer">
-              My Transfers
-            </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/account">
-              My Accounts
-            </Dropdown.Item>
-            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-          </DropdownButton>
-        ) : (
-          <Link
-            to="/authentication"
-            className="btn1 blue-gradient btn-with-image text-nowrap btn-primary"
-          >
-            <i className="flaticon-login"></i>
-            <i className="flaticon-login"></i>
-            Sign Up / Login
-          </Link>
-        )}
+              <Dropdown.Item as={Link} to="/profile">
+                My Profile
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/transfer">
+                My Transfers
+              </Dropdown.Item>
+              <Dropdown.Item as={Link} to="/account">
+                My Accounts
+              </Dropdown.Item>
+              <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+            </DropdownButton>
+          ) : (
+            <Link
+              to="/authentication"
+              className="btn1 blue-gradient btn-with-image text-nowrap btn-primary"
+            >
+              <i className="flaticon-login"></i>
+              Sign Up / Login
+            </Link>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 export default UserMenu;
