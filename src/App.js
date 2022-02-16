@@ -16,7 +16,7 @@ function App() {
     try {
       /**** LOAD USER ****/
       const respUser = await getUser();
-      if (respUser.status !== 200) throw "An error occured whlie getting user";
+      if (respUser.status !== 200) throw "An error occured while getting user";
       dispatchUser(loginSuccess(respUser.data));
 
       setLoading(false);
@@ -36,7 +36,7 @@ function App() {
         <LoadingPage />
       </div>
     );
-  } else
+  } else {
     return (
       <div className="App">
         <BrowserRouter>
@@ -45,6 +45,7 @@ function App() {
         </BrowserRouter>
       </div>
     );
+  }
 }
 
 export default App;

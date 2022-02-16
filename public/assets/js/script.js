@@ -1,13 +1,5 @@
 jQuery(function ($) {
   "use strict";
-  jQuery(".mean-menu").meanmenu({ meanScreenWidth: "1099" });
-  $(window).on("scroll", function () {
-    if ($(this).scrollTop() > 50) {
-      $(".main-nav").addClass("is-sticky");
-    } else {
-      $(".main-nav").removeClass("is-sticky");
-    }
-  });
 
   $(document).ready(function () {
     $(".video-modal").magnificPopup({

@@ -1,15 +1,15 @@
-import React, { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { useFormik } from "formik"
-import * as Yup from "yup"
-import { Form, Spinner } from "react-bootstrap"
-import { register } from "../../api/user-service"
-import { toast } from "react-toastify"
-import MaskInput from "react-maskinput"
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { Form, Spinner } from "react-bootstrap";
+import { register } from "../../api/user-service";
+import { toast } from "react-toastify";
+import MaskInput from "react-maskinput";
 
 const RegisterForm = ({ setActive }) => {
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const initialValues = {
     ssn: "",
     password: "",
@@ -19,52 +19,52 @@ const RegisterForm = ({ setActive }) => {
     email: "",
     address: "",
     mobilePhoneNumber: "",
-  }
+  };
   const validationSchema = Yup.object({
     ssn: Yup.string()
-      .required("Please enter a ssn.")
+      .required("Please enter an SSN")
       .test(
         "includes_",
-        "Please enter a valid ssn",
+        "Please enter a valid SSN",
         (value) => value && !value.includes("_")
       ),
-    firstName: Yup.string().required("Please enter your firstname"),
-    lastName: Yup.string().required("Please enter your lastname"),
+    firstName: Yup.string().required("Please enter your first name"),
+    lastName: Yup.string().required("Please enter your last name"),
     email: Yup.string().required("Please enter your email"),
     password: Yup.string().required("Please enter a password"),
     confirmPassword: Yup.string()
       .required("Please enter your password again")
-      .oneOf([Yup.ref("password")], "Password fields don`t match"),
+      .oneOf([Yup.ref("password")], "Passwords do not match"),
     address: Yup.string().required("Please enter your adress"),
     mobilePhoneNumber: Yup.string()
-      .required("This field is Required")
+      .required("Please enter your phone number")
       .test(
         "includes_",
-        "Please enter a valid phonenumber",
+        "Please enter a valid phone number",
         (value) => value && !value.includes("_")
       ),
-  })
+  });
 
   const onSubmit = (values) => {
-    console.log(values)
-    setLoading(true)
+    console.log(values);
+    setLoading(true);
 
     register(values)
       .then((resp) => {
-        setLoading(false)
-        toast("You are registered successfully!")
-        setActive("login")
+        setLoading(false);
+        toast("You are registered successfully!");
+        setActive("login");
       })
       .catch((err) => {
-        toast(err.response.data.message)
-        setLoading(false)
-      })
-  }
+        toast(err.response.data.message);
+        setLoading(false);
+      });
+  };
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit,
-  })
+  });
   return (
     <div className="authentication-form">
       <Form noValidate onSubmit={formik.handleSubmit}>
@@ -80,7 +80,7 @@ const RegisterForm = ({ setActive }) => {
                 <Form.Control
                   type="text"
                   className="form-control"
-                  placeholder="SSN *"
+                  placeholder="SSN*"
                   {...formik.getFieldProps("ssn")}
                   isInvalid={!!formik.errors.ssn}
                   as={MaskInput}
@@ -105,7 +105,7 @@ const RegisterForm = ({ setActive }) => {
                 <Form.Control
                   type="text"
                   className="form-control"
-                  placeholder="first name"
+                  placeholder="First Name*"
                   {...formik.getFieldProps("firstName")}
                   isInvalid={!!formik.errors.firstName}
                 />
@@ -126,7 +126,7 @@ const RegisterForm = ({ setActive }) => {
                 <Form.Control
                   type="text"
                   className="form-control"
-                  placeholder="last name"
+                  placeholder="Last Name*"
                   {...formik.getFieldProps("lastName")}
                   isInvalid={!!formik.errors.lastName}
                 />
@@ -147,7 +147,7 @@ const RegisterForm = ({ setActive }) => {
                 <Form.Control
                   type="email"
                   className="form-control"
-                  placeholder="email"
+                  placeholder="Email*"
                   {...formik.getFieldProps("email")}
                   isInvalid={!!formik.errors.email}
                 />
@@ -168,7 +168,7 @@ const RegisterForm = ({ setActive }) => {
                 <Form.Control
                   type="password"
                   className="form-control"
-                  placeholder="Password"
+                  placeholder="Password*"
                   {...formik.getFieldProps("password")}
                   isInvalid={!!formik.errors.password}
                 />
@@ -189,7 +189,7 @@ const RegisterForm = ({ setActive }) => {
                 <Form.Control
                   type="password"
                   className="form-control"
-                  placeholder="Password"
+                  placeholder="Confirm Password*"
                   {...formik.getFieldProps("confirmPassword")}
                   isInvalid={!!formik.errors.confirmPassword}
                 />
@@ -210,7 +210,7 @@ const RegisterForm = ({ setActive }) => {
                 <Form.Control
                   type="text"
                   className="form-control"
-                  placeholder="address"
+                  placeholder="Address*"
                   {...formik.getFieldProps("address")}
                   isInvalid={!!formik.errors.address}
                 />
@@ -231,13 +231,13 @@ const RegisterForm = ({ setActive }) => {
                 <Form.Control
                   type="text"
                   className="form-control"
-                  placeholder="phone number"
+                  placeholder="Phone Number*"
                   {...formik.getFieldProps("mobilePhoneNumber")}
                   isInvalid={!!formik.errors.mobilePhoneNumber}
                   as={MaskInput}
                   maskChar="_"
                   mask="(000) 000-0000"
-                  alwaysShowMask
+                  showMask
                 />
                 <Form.Control.Feedback type="invalid">
                   {formik.errors.mobilePhoneNumber}
@@ -259,6 +259,6 @@ const RegisterForm = ({ setActive }) => {
         </div>
       </Form>
     </div>
-  )
-}
-export default RegisterForm
+  );
+};
+export default RegisterForm;

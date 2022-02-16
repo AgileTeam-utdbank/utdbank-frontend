@@ -52,6 +52,7 @@ ul {
   border-color: var(--color4) !important;
   box-shadow: 0 0 0 0.25rem var(--color4-transparent-15) !important;
 }
+
 .client-carousel.owl-theme .owl-nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -126,4 +127,89 @@ ul {
 .search-any h3 span {
   display: inline-block;
   border-bottom: 3px rgb(0, 0, 0) solid;
+}
+footer .footer-copyright-text a {
+  text-decoration: none;
+  font-weight: bold;
+}
+.navbar-light {
+  position: relative;
+}
+.topbar .navbar-option .mini {
+  position: absolute;
+  left: auto;
+  top: 50%;
+  transform: translateY(-30%);
+  right: rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+}
+.topbar .navbar-light .navbar-toggler {
+  right: 0px;
+  left: auto;
+  text-align: center;
+  text-indent: 0px;
+  font-size: 18px;
+  top: 50%;
+  transform: translateY(-5%);
+  margin-left: 1rem;
+  color: var(--color4-transparent-15);
+  border: none;
+}
+.topbar .navbar-light .navbar-toggler span {
+  display: block;
+  width: 2rem;
+  height: 0.25rem;
+  background-color: var(--color4);
+  margin: 4px;
+  border-radius: 3px;
+}
+.navbar-light {
+  padding: 1rem;
+}
+
+.topbar .navbar-light .navbar-nav ul {
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 992px) {
+  .topbar .navbar-collapse .navbar-nav .nav-link {
+    padding: 1rem;
+    color: var(--color4);
+    font-weight: 450;
+    font-size: 16.5px;
+  }
+  .topbar .navbar-collapse .navbar-nav .nav-item:hover .nav-link {
+    color: var(--color2) !important;
+  }
+  .topbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover,
+  .topbar .navbar-collapse .navbar-nav .nav-item .nav-link.active {
+    padding: 1rem;
+    font-size: 16.5px;
+    color: var(--color2) !important;
+    font-weight: 450;
+  }
+}
+@media (max-width: 992px) {
+  .topbar .navbar-collapse .navbar-nav:first-child {
+    margin-top: 2rem;
+  }
+  .topbar .navbar-collapse .navbar-nav .nav-link {
+    padding: 1rem;
+    border-top: 1px solid var(--color4-transparent-15);
+    color: var(--color4);
+    font-weight: 450;
+  }
+  .topbar .navbar-collapse .navbar-nav .nav-item:hover .nav-link {
+    color: var(--color2) !important;
+  }
+  .topbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover,
+  .topbar .navbar-collapse .navbar-nav .nav-item .nav-link.active {
+    padding: 1rem;
+    border-top: 1px solid var(--color4-transparent-15);
+    color: var(--color2);
+    font-weight: 450;
+  }
 }
